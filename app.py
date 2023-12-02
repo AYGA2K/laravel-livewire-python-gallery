@@ -6,21 +6,40 @@ import mahotas as mh
 from flask import Flask, request, jsonify
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
 
 app = Flask(__name__)
 
 # dir where images are stored and accessed by name.
 sharedFolder = "images/"
+# needs to be saved on the fucking db
 
 
-@app.route('/getRGBHistogram', methods=['GET'])
+app.config["MYSQL_HOST"] = "localhost"
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = "password"
+app.config["MYSQL_DB"] = "gallery_app"
+
+
+mysql = MySQL(app)
+
+
+@app.route("/processAll", methods=["GET"])
+def processAll():
+    # do all the processing here
+    for arg in request.args:
+        print(arg)
+    return jsonify({"message": "all done"})
+
+
+@app.route("/getRGBHistogram", methods=["GET"])
 def getRGBHistogram():
-
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -28,7 +47,7 @@ def getRGBHistogram():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
     # Calculate RGB histograms
     histB = cv2.calcHist([image], [0], None, [256], [0, 256])
@@ -37,22 +56,21 @@ def getRGBHistogram():
 
     # Prepare response data
     response_data = {
-        'dataR': histR.tolist(),
-        'dataG': histG.tolist(),
-        'dataB': histB.tolist()
+        "dataR": histR.tolist(),
+        "dataG": histG.tolist(),
+        "dataB": histB.tolist(),
     }
 
-    return jsonify(response_data), 200, {'Content-Type': 'application/json'}
+    return jsonify(response_data), 200, {"Content-Type": "application/json"}
 
 
-@app.route('/getColorMoments', methods=['GET'])
+@app.route("/getColorMoments", methods=["GET"])
 def getColorMoments():
-
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -60,7 +78,7 @@ def getColorMoments():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
     # Convertir l'image en espace de couleur Lab
     lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2Lab)
@@ -72,24 +90,19 @@ def getColorMoments():
     mean_l, mean_a, mean_b = mean_lab[:3]
 
     # Créer un dictionnaire avec les moments de couleur
-    color_moments = {
-        'mean_l': mean_l,
-        'mean_a': mean_a,
-        'mean_b': mean_b
-    }
+    color_moments = {"mean_l": mean_l, "mean_a": mean_a, "mean_b": mean_b}
 
     # Retourner les données en format JSON
-    return jsonify(color_moments), 200, {'Content-Type': 'application/json'}
+    return jsonify(color_moments), 200, {"Content-Type": "application/json"}
 
 
-@app.route('/getClusteringByRGBcolors', methods=['GET'])
+@app.route("/getClusteringByRGBcolors", methods=["GET"])
 def getClusteringByRGBcolors():
-
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -97,9 +110,9 @@ def getClusteringByRGBcolors():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
-    k = int(request.args.get('k'))
+    k = int(request.args.get("k"))
 
     # Perform clustering
     examples = image.reshape((image.shape[0] * image.shape[1], 3))
@@ -110,26 +123,29 @@ def getClusteringByRGBcolors():
     dominant_colors = kmeans.cluster_centers_.astype(int)
 
     # Convert the RGB values to hexadecimal for better visualization
-    hex_colors = ['#%02x%02x%02x' % (r, g, b) for r, g, b in dominant_colors]
+    hex_colors = ["#%02x%02x%02x" % (r, g, b) for r, g, b in dominant_colors]
 
     # Count occurrences of each color
     color_counts = np.histogram(kmeans.labels_, bins=range(k + 1))[0]
 
     # Convert the histogram data to JSON
-    histogram_data = {'color_counts': {hex_color: int(count) for hex_color, count in zip(hex_colors, color_counts)}}
+    histogram_data = {
+        "color_counts": {
+            hex_color: int(count) for hex_color, count in zip(hex_colors, color_counts)
+        }
+    }
 
     # Return the histogram data as JSON
-    return jsonify(histogram_data), 200, {'Content-Type': 'application/json'}
+    return jsonify(histogram_data), 200, {"Content-Type": "application/json"}
 
 
-@app.route('/getTraumaCharacteristics', methods=['GET'])
+@app.route("/getTraumaCharacteristics", methods=["GET"])
 def getTraumaCharacteristics():
-
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -137,7 +153,7 @@ def getTraumaCharacteristics():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
     # Convert the image to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -154,24 +170,24 @@ def getTraumaCharacteristics():
     roughness = textures.mean(axis=0)[9]
 
     response_data = {
-        'contrast': contrast,
-        'directionality': directionality,
-        'coarseness': coarseness,
-        'linelikeness': linelikeness,
-        'regularity': regularity,
-        'roughness': roughness
+        "contrast": contrast,
+        "directionality": directionality,
+        "coarseness": coarseness,
+        "linelikeness": linelikeness,
+        "regularity": regularity,
+        "roughness": roughness,
     }
 
     return jsonify(response_data)
 
 
-@app.route('/getGaborData', methods=['GET'])
+@app.route("/getGaborData", methods=["GET"])
 def getGaborData():
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -179,7 +195,7 @@ def getGaborData():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
     # Define orientations and scales
     orientations = [0, 45, 90, 135]  # in degrees
@@ -197,7 +213,7 @@ def getGaborData():
                 10.0,  # wavelength of the sinusoidal factor
                 0.5,  # spatial aspect ratio
                 0,  # phase offset
-                ktype=cv2.CV_32F  # datatype of filter coefficients
+                ktype=cv2.CV_32F,  # datatype of filter coefficients
             )
 
             # Apply the Gabor filter to the image
@@ -214,13 +230,10 @@ def getGaborData():
         mean_value = np.mean(gray_image)
         std_value = np.std(gray_image)
 
-        statistics.append({
-            'mean': mean_value,
-            'std': std_value
-        })
+        statistics.append({"mean": mean_value, "std": std_value})
 
-    means = [stat['mean'] for stat in statistics]
-    stds = [stat['std'] for stat in statistics]
+    means = [stat["mean"] for stat in statistics]
+    stds = [stat["std"] for stat in statistics]
 
     # Reshape to a 2D array for StandardScaler
     means = np.array(means).reshape(-1, 1)
@@ -233,21 +246,20 @@ def getGaborData():
 
     # Update the statistics with normalized values
     for i, stat in enumerate(statistics):
-        stat['mean'] = normalized_means[i][0]
-        stat['std'] = normalized_stds[i][0]
+        stat["mean"] = normalized_means[i][0]
+        stat["std"] = normalized_stds[i][0]
 
     # Return the statistics as clean JSON using Flask's jsonify
     return jsonify(statistics)
 
 
-@app.route('/cropImage', methods=['GET'])
+@app.route("/cropImage", methods=["GET"])
 def cropImage():
-
-    imageName = request.args.get('imageName')
+    imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -255,35 +267,40 @@ def cropImage():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
-    x = int(request.args.get('x'))
-    y = int(request.args.get('y'))
-    width = int(request.args.get('width'))
-    height = int(request.args.get('height'))
+    x = int(request.args.get("x"))
+    y = int(request.args.get("y"))
+    width = int(request.args.get("width"))
+    height = int(request.args.get("height"))
 
     # Crop the image based on the provided parameters
-    cropped_image = image[y:y + height, x:x + width]
+    cropped_image = image[y : y + height, x : x + width]
 
     if cropped_image is not None:
-
-        cropped_image_path = os.path.join(sharedFolder, 'cropped_' + str(time.time()) + imageName)
+        cropped_image_path = os.path.join(
+            sharedFolder, "cropped_" + str(time.time()) + imageName
+        )
         cv2.imwrite(cropped_image_path, cropped_image)
 
-        return jsonify({'success': 'Image cropped and saved successfully', 'cropped_image_path': cropped_image_path})
+        return jsonify(
+            {
+                "success": "Image cropped and saved successfully",
+                "cropped_image_path": cropped_image_path,
+            }
+        )
     else:
-        return jsonify({'error': 'Failed to crop the image'})
+        return jsonify({"error": "Failed to crop the image"})
 
 
-@app.route('/resizeImage', methods=['GET'])
+@app.route("/resizeImage", methods=["GET"])
 def resizeImage():
-
-    imageName = request.args.get('imageName')
-    scale_factor = float(request.args.get('scaleFactor'))
+    imageName = request.args.get("imageName")
+    scale_factor = float(request.args.get("scaleFactor"))
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({'error': 'Image name not provided'})
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
     image = cv2.imread(sharedFolder + imageName)
@@ -291,7 +308,7 @@ def resizeImage():
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
-        return jsonify({'error': 'Failed to load the image from the storage'})
+        return jsonify({"error": "Failed to load the image from the storage"})
 
     # Resize the image
     resized_image = cv2.resize(image, None, fx=scale_factor, fy=scale_factor)
@@ -300,13 +317,20 @@ def resizeImage():
         # Save or process the resized image as needed
 
         # For example, you can save the resized image
-        resized_image_path = os.path.join(sharedFolder, 'resized_' + str(time.time()) + imageName)
+        resized_image_path = os.path.join(
+            sharedFolder, "resized_" + str(time.time()) + imageName
+        )
         cv2.imwrite(resized_image_path, resized_image)
 
-        return jsonify({'success': 'Image resized and saved successfully', 'resized_image_path': resized_image_path})
+        return jsonify(
+            {
+                "success": "Image resized and saved successfully",
+                "resized_image_path": resized_image_path,
+            }
+        )
     else:
-        return jsonify({'error': 'Failed to resize the image'})
+        return jsonify({"error": "Failed to resize the image"})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
