@@ -7,10 +7,10 @@
         <div class="bg-red-200 text-red-800 p-2 rounded-md mb-4">{{ $errorMessage }}</div>
         @endif
 
-        <form class=" p-4 " wire:submit.prevent="store">
-            <div class="p-4 ">
+        <form class="  " wire:submit.prevent="store">
+            <div class=" ">
                 <label for="category" class="text-white"> Select a category </label>
-                <select name="category" wire:model="category" id="category" class="text-black mt-1 p-2 border rounded-md w-full @error('category') border-red-500 @enderror">
+                <select name="category" wire:model="category" id="category" class="text-black   border rounded-md w-full @error('category') border-red-500 @enderror">
                     <option value="" disabled selected>Select a category</option>
                     @foreach ($categories as $cat)
                     <option value="{{ $cat }}"> {{$cat}} </option>
@@ -21,9 +21,9 @@
                 @enderror
 
             </div>
-            <div class="p-4">
+            <div class="py-4">
                 <label for="images" class="block text-white">Choose an image or many images :</label>
-                <input type="file" wire:model="images" id="images" class="mt-1 p-2 border rounded-md w-full @error('image') border-red-500 @enderror"  multiple >
+                <input type="file" wire:model="images" id="images" class=" p-2 border rounded-md w-full @error('image') border-red-500 @enderror" multiple>
                 @error('images')
                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                 @enderror
