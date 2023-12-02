@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageUploadController;
+use App\Livewire\ProcessingImage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::view('/process/pic','process-image')
+Route::get('/process/{imageId}', ProcessingImage::class)
     ->middleware(['auth'])
     ->name('process-image');
 
