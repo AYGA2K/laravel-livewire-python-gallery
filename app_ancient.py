@@ -1,7 +1,3 @@
-#! /usr/bin/python3
-
-
-import json
 import os
 import cv2
 import numpy as np
@@ -10,63 +6,44 @@ import mahotas as mh
 from flask import Flask, request, jsonify
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-import mysql.connector
-
+# from flask_mysqldb import MySQL
+# import MySQLdb.cursors
 
 app = Flask(__name__)
 
 # dir where images are stored and accessed by name.
-sharedFolder = "./public/storage/"
+sharedFolder = "images/"
+# needs to be saved on the fucking db
 
-# Connect to the MySQL database
-connection = mysql.connector.connect(
-    host='localhost',
-    user='makarov',
-    password='19841984',
-    database='laravel'
-)
 
-@app.route("/preprocessing", methods=["GET"])
+# app.config["MYSQL_HOST"] = "localhost"
+# app.config["MYSQL_USER"] = "root"
+# app.config["MYSQL_PASSWORD"] = "password"
+# app.config["MYSQL_DB"] = "gallery_app"
+
+
+# mysql = MySQL(app)
+
+
+@app.route("/processAll", methods=["GET"])
+def processAll():
+    # do all the processing here
+    print("it's called")
+    return jsonify({"message": "all done"})
+
+
+
+@app.route("/getRGBHistogram", methods=["GET"])
 def getRGBHistogram():
-
     imageName = request.args.get("imageName")
-    
+
     # Check if imageName is provided
     if imageName is None:
         return jsonify({"error": "Image name not provided"})
 
-    (histR, histG, histB) = getRGBHistogram(imageName)
-    (histR, histG, histB) = (json.dumps(histR), json.dumps(histG), json.dumps(histB))    
-    ColorsMoment = json.dumps(getColorsMoment(imageName))
-    trauma =json.dumps(getTraumaCharacteristics(imageName))
-    gabor =json.dumps(getGaborData(imageName))
-
-    # Update data in the table
-    update_data_query = "UPDATE images SET HistoR = %s, HistoG = %s, HistoB = %s, ColorM = %s, Trauma = %s, Gabor = %s WHERE name = %s"
-
-    # Create a cursor to interact with the database
-    cursor = connection.cursor()
-
-    # cursor.execute(update_data_query, (histoRGB) , (ColorsMoment) , (trauma) ,(gabor))
-    print(imageName)
-    
-    cursor.execute(update_data_query, (histR, histG, histB , ColorsMoment, trauma, gabor, imageName))
-
-    # Commit the changes
-    connection.commit()
-
-    # Close the cursor and connection
-    cursor.close()
-#    connection.close()
-
-    return "success"
-
-
-def getRGBHistogram(name):
-
     # Load the image
-    image = cv2.imread(sharedFolder + name)
-    
+    image = cv2.imread(sharedFolder + imageName)
+
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
@@ -78,15 +55,25 @@ def getRGBHistogram(name):
     histR = cv2.calcHist([image], [2], None, [256], [0, 256])
 
     # Prepare response data
-    histR , histG, histB = histR.flatten().tolist(), histG.flatten().tolist(), histB.flatten().tolist() 
-    
-    return (json.JSONEncoder().encode(histR), json.JSONEncoder().encode(histG), json.JSONEncoder().encode(histB)) 
+    response_data = {
+        "dataR": histR.tolist(),
+        "dataG": histG.tolist(),
+        "dataB": histB.tolist(),
+    }
+
+    return jsonify(response_data), 200, {"Content-Type": "application/json"}
 
 
-def getColorsMoment(name):
+@app.route("/getColorMoments", methods=["GET"])
+def getColorMoments():
+    imageName = request.args.get("imageName")
+
+    # Check if imageName is provided
+    if imageName is None:
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
-    image = cv2.imread(sharedFolder + name)
+    image = cv2.imread(sharedFolder + imageName)
 
     # Check if the image is loaded successfully
     if image is None:
@@ -106,12 +93,11 @@ def getColorsMoment(name):
     color_moments = {"mean_l": mean_l, "mean_a": mean_a, "mean_b": mean_b}
 
     # Retourner les données en format JSON
-    return json.JSONEncoder().encode(color_moments)
+    return jsonify(color_moments), 200, {"Content-Type": "application/json"}
 
 
 @app.route("/getClusteringByRGBcolors", methods=["GET"])
 def getClusteringByRGBcolors():
-
     imageName = request.args.get("imageName")
 
     # Check if imageName is provided
@@ -149,13 +135,20 @@ def getClusteringByRGBcolors():
         }
     }
 
-    return json.JSONEncoder().encode(histogram_data)
+    # Return the histogram data as JSON
+    return jsonify(histogram_data), 200, {"Content-Type": "application/json"}
 
 
-def getTraumaCharacteristics(name):
+@app.route("/getTraumaCharacteristics", methods=["GET"])
+def getTraumaCharacteristics():
+    imageName = request.args.get("imageName")
+
+    # Check if imageName is provided
+    if imageName is None:
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
-    image = cv2.imread(sharedFolder + name)
+    image = cv2.imread(sharedFolder + imageName)
 
     # Check if the image is loaded successfully
     if image is None:
@@ -185,14 +178,19 @@ def getTraumaCharacteristics(name):
         "roughness": roughness,
     }
 
-    
-    return json.JSONEncoder().encode(response_data)
+    return jsonify(response_data)
 
 
-def getGaborData(name):
+@app.route("/getGaborData", methods=["GET"])
+def getGaborData():
+    imageName = request.args.get("imageName")
+
+    # Check if imageName is provided
+    if imageName is None:
+        return jsonify({"error": "Image name not provided"})
 
     # Load the image
-    image = cv2.imread(sharedFolder + name)
+    image = cv2.imread(sharedFolder + imageName)
 
     # Check if the image is loaded successfully
     if image is None:
@@ -252,9 +250,7 @@ def getGaborData(name):
         stat["std"] = normalized_stds[i][0]
 
     # Return the statistics as clean JSON using Flask's jsonify
-    #
-    
-    return json.JSONEncoder().encode(statistics)
+    return jsonify(statistics)
 
 
 @app.route("/cropImage", methods=["GET"])
@@ -338,4 +334,3 @@ def resizeImage():
 
 if __name__ == "__main__":
     app.run()
-

@@ -18,6 +18,12 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->json('HistoR')->nullable();
+            $table->json('HistoG')->nullable();
+            $table->json('HistoB')->nullable();
+            $table->json('ColorM')->nullable();
+            $table->json('Trauma')->nullable();
+            $table->json('Gabor')->nullable();
             $table->timestamps();
         });
     }

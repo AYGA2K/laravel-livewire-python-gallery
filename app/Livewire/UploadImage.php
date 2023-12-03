@@ -7,6 +7,9 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Category;
 use App\Models\Image;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\ConnectionException;
+
 
 class UploadImage extends Component
 {
@@ -35,13 +38,14 @@ class UploadImage extends Component
     {
 
         $this->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:20048',             'category' => 'required',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:20048', 'category' => 'required',
         ]);
 
         foreach ($this->images as $key => $image) {
             if ($image->isValid()) {
                 // Store the image
                 $imageName = $image->store('images', 'public');
+
 
                 // Find the user and create a new image related to the user
                 $user = User::find(auth()->user()->id);
@@ -52,6 +56,17 @@ class UploadImage extends Component
                 $user->images()->save($imageModel);
                 $category->images()->save($imageModel);
                 $imageModel->save();
+
+
+                // calling Agent's 47 fucking api
+                // this block
+                try {
+                    Http::get("127.0.0.1:5000/preprocessing?imageName=" . $imageName);
+                    $this->errorMessage = "" ;
+                }
+                catch (ConnectionException $e) {
+                    $this->errorMessage = "Cant's connect to the server " . $e->getMessage() ;
+                }
             } else {
                 $this->errorMessage = 'Error uploading one or more images.';
                 return;
