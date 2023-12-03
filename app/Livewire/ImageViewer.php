@@ -39,6 +39,7 @@ class ImageViewer extends Component
 
         $this->loadImagesByCategory();
     }
+
     public function render()
     {
         return view('livewire.image-viewer');

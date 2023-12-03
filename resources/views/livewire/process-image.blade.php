@@ -1,64 +1,159 @@
-    <div class="container mx-auto text-white">
+    <div class="container mx-auto text-white border-box">
         <div class="flex mt-12 space-x-12">
-            <div class="w-1/2">
-                @if ($picture != null)
-                <img src="{{ asset('storage/' . $picture->name) }}" class="w-full h-auto">
-                @else
-                <h3>Please select an image from the uploaded files above.</h3>
-                @endif
+            <div class="flex flex-col gap-[20px] w-[70vw]">
+                <div class="w-[70%]">
+                    @if ($picture != null)
+                    <img src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
+                    @else
+                    <h3>Please select an image from the uploaded files above.</h3>
+                    @endif
+                </div>
+                <div class="flex flex-wrap gap-[20px]">
+                    @foreach ( $similar_images as $image )
+                    <img src="{{ asset('storage/' . $image->name ) }}" class="w-[150px] h-auto">
+                    @endforeach
+                </div>
             </div>
-            <div>
-                <h4>Histogram</h4>
-                <form wire:submit="getHistogram" class="mt-4 p-4">
-                    <button type="submit" class="w-32 border-3 bg-cyan-500 py-2 hover:bg-cyan-700  border-black rounded-lg">Get Histogram</button>
-                </form>
-                <hr class="my-4">
-                <h4 class="my-4">Cropping</h4>
-                <form wire:submit="cropPic" class="mt-4 p-4   border-3 border-black rounded-lg">
-                    <label for="width">Width</label>
-                    <input type="number" wire:model="width" id="width" class="border-2 text-black border-black rounded-md p-1 w-32">
-                    <label for="height">Height</label>
-                    <input type="number" wire:model="height" id="height" class="border-2 text-black border-black rounded-md p-1 w-32">
-                    </br>
-                    <label for="x">X</label>
-                    <input type="number" wire:model="x" id="x" class="border-2 border-black text-black rounded-md p-1 w-32">
-                    <label for="y">Y</label>
-                    <input type="number" wire:model="y" id="y" class="border-2 border-black text-black rounded-md p-1 w-32">
+            <div class="w-[30vw]">
+                <h2>Histogram</h2>
+                <h6></h6>
+                <canvas id="historgram_canvas"></canvas>
+                <h2>Color Moment</h2>
+                <h6></h6>
+                <canvas id="color_moment_canvas"></canvas>
+                <h2>Indices</h2>
+                <h6>This is a damn index </h6>
+                <h2>Trauma</h2>
+                <table class="border-box border border-gray-300 mt-[40px] whitespace-pre-line " >
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">contrast</th>
+                            <th class="py-2 px-4 border-b">directionality</th>
+                            <th class="py-2 px-4 border-b">coarsness</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border-b">{{ $contrast  }}</td>
+                            <td class="py-2 px-4 border-b">{{ $directionality  }}</td>
+                            <td class="py-2 px-4 border-b">{{ $coarseness }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="border-box border border-gray-300 mt-[40px] whitespace-pre-line " >
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">linelikeness</th>
+                            <th class="py-2 px-4 border-b">regularity</th>
+                            <th class="py-2 px-4 border-b">roughness</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
 
-                    <button type="submit" class="w-32 border-3 border-black rounded-lg mt-4 bg-cyan-500 py-2 hover:bg-cyan-700  ">Crop</button>
-                </form>
-                <hr class="my-4">
-                <h4 class="my-4">Clustering</h4>
-                <form wire:submit="clustering" class="mt-4 p-4 border-3 border-black rounded-lg">
-                    <label for="k">Number of Clusters</label>
-                    <input type="number" wire:model="k" id="k" class="border-2 border-black text-black rounded-md p-1 w-32">
-                    <button type="submit" class="w-32 border-3 border-black rounded-lg mt-4 bg-cyan-500 py-2 hover:bg-cyan-700 ">Cluster</button>
-                </form>
-                <hr class="my-4">
-                <h4 class="my-4">Get Color Moment</h4>
-                <form wire:submit="getColorMoment" class="mt-4 p-4 border-3 border-black rounded-lg">
-                    <button type="submit" class="w-32 border-3 border-black rounded-lg mt-4 bg-cyan-500 py-2 hover:bg-cyan-700  ">Get Color Moment</button>
-                </form>
-
-                @if ($picture != null && $histogram_clicked == true)
-                <h4 class="my-4">Histogram</h4>
-                <img class="my-4" src="{{ asset('storage/images/' . $histogram_pic_path) }}">
-                @endif
-
-                @if ($picture != null && $croping_clicked == true)
-                <h4 class="my-4">Cropped Picture</h4>
-                <img class="my-4" src="{{ asset('storage/images/' . $cropped_pic_path) }}">
-                @endif
-
-                @if ($picture != null && $clustering_clicked == true)
-                <h4 class="my-4">Clustered Picture</h4>
-                <img class="my-4" src="{{ asset('storage/images/' . $clustered_pic_path) }}">
-                @endif
-
-                @if ($picture != null && $get_color_clicked == true)
-                <h4 class="my-4">Colored Picture</h4>
-                <img class="my-4" src="{{ asset('storage/images/' . $get_colored_pic_path) }}">
-                @endif
+                            <td class="py-2 px-4 border-b">{{ $linelikeness }}</td>
+                            <td class="py-2 px-4 border-b">{{ $regularity }}</td>
+                            <td class="py-2 px-4 border-b">{{ $roughness }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Gabor</h2>
+                <h6></h6>
+                <canvas id="gabor_canvas"></canvas>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+
+        // histogram canvas
+        const ctx = document.getElementById('historgram_canvas');
+
+        var dataR = {{$dataR}}; 
+        var dataG = {{$dataG}};
+        var dataB = {{$dataB}};
+
+
+        var labels = [] ;
+        
+        for (iii = 0 ; iii < 255 ; iii++)
+            labels.push(iii);
+        
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Line 1',
+                        data: dataB,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        pointBorderWidth: 0.2,
+                        fill: false
+                    },
+                    {
+                        label: 'Line 2',
+                        data: dataR,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        pointBorderWidth: 0.2,
+                        fill: false
+                    },
+                    {
+                        label: 'Line 3',
+                        data: dataG,
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 1,
+                        pointBorderWidth: 0.2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        stacked: false,
+                        suggestedMin: 0,
+                        suggestedMax: 255
+                    }
+                }
+            }
+        });
+
+
+    
+
+        // color moment canvas
+        const color_moment_canvas = document.getElementById('color_moment_canvas');
+        let color_moment_data = JSON.parse(@json($color_moment_data));
+        
+
+        new Chart(color_moment_canvas, {
+            type: 'bar',
+            data: {
+                labels: ["mean_I", "mean_b", "mean_a"],
+                datasets: [
+                    {
+                        label: 'Line 1',
+                        data: color_moment_data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        pointBorderWidth: 0.2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        stacked: false,
+                    }
+                }
+            }
+        });
+
+        
+
+</script>
