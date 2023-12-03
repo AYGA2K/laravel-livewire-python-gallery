@@ -24,8 +24,11 @@ class UploadImage extends Component
 
     public function mount()
     {
-        $this->categories = Category::all()->pluck('name');
-        $this->category = $this->categories[0];
+        $this->categories = Category::where('user_id', auth()->user()->id)->pluck('name');
+
+        if ($this->categories->count() > 0) {
+            $this->category = $this->categories[0];
+        }
     }
 
     public function store()

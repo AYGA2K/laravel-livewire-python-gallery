@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\User;
+
 class AddCategory extends Component
 {
     public $categoryName;
@@ -15,11 +17,11 @@ class AddCategory extends Component
             'categoryName' => 'required|unique:categories,name',
         ]);
 
-        Category::create(['name' => $this->categoryName]);
+        $user = User::find(auth()->user()->id);
+        $user->categories()->create(['name' => $this->categoryName]);
 
         $this->resetForm();
         $this->successMessage = 'Category added successfully.';
-
     }
 
     public function render()
@@ -31,5 +33,4 @@ class AddCategory extends Component
     {
         $this->categoryName = null;
     }
-
 }

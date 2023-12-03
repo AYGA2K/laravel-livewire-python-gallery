@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Image;
 
 use App\Models\Category;
+use App\Models\User;
 
 class ImageViewer extends Component
 {
@@ -18,7 +19,8 @@ class ImageViewer extends Component
         if ($this->selectedCategory === 'All') {
             $this->images = Image::where('user_id', auth()->user()->id)->get();
         } else {
-            $category = Category::firstWhere('name', $this->selectedCategory);
+            $user = User::find(auth()->user()->id);
+            $category = $user->categories->where('name', $this->selectedCategory)->first();
             $this->images = Image::where('user_id', auth()->user()->id)->where('category_id', $category->id)->get();
         }
     }
@@ -32,7 +34,7 @@ class ImageViewer extends Component
     public function mount()
     {
         $this->categories = ['All'];
-        $dataCategories = Category::all()->pluck('name');
+        $dataCategories = Category::where('user_id', auth()->user()->id)->pluck('name');
         $this->categories = array_merge($this->categories, $dataCategories->toArray());
 
         $this->loadImagesByCategory();
