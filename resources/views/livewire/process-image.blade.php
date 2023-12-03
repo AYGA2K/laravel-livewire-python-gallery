@@ -3,7 +3,8 @@
             <div class="flex flex-col gap-[20px] w-[70vw]">
                 <div class="w-[70%]">
                     @if ($picture != null)
-                    <img src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
+                    <img id="main-pic" src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
+                    <button id="crop_button">click to crop</button>
                     @else
                     <h3>Please select an image from the uploaded files above.</h3>
                     @endif
@@ -154,6 +155,49 @@
             }
         });
 
-        
 
+// cropper js
+//
+//
+
+
+        // const image = document.getElementById('main-pic');
+        // const cropper = new Cropper(image, {
+        //     aspectRatio: 16 / 9,
+        //     crop(event) {
+        //         console.log(event.detail.x);
+        //         console.log(event.detail.y);
+        //         console.log(event.detail.width);
+        //         console.log(event.detail.height);
+        //         console.log(event.detail.rotate);
+        //         console.log(event.detail.scaleX);
+        //         console.log(event.detail.scaleY);
+        //     },
+        //     modal: false
+        // });
+
+
+        croppedData = {};
+        const imageToCrop = document.querySelector("#main-pic");
+        if (imageToCrop) {
+            const cropper = new Cropper(imageToCrop, {
+                aspectRatio: 1,
+                crop: function (e) {
+                    var data = e.detail;
+                    croppedData = {
+                        x: data.x,
+                        y: data.y,
+                        width: data.width,
+                        height: data.height
+                    };
+                }
+            });
+        } else {
+            console.error("Image element not found");
+        }
+        const cropButton = document.querySelector("#crop_button"); // Replace with your actual button ID
+        cropButton.addEventListener("click", function () {
+
+            console.log("Cropped Data:", croppedData);
+        });
 </script>
