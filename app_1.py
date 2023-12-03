@@ -126,13 +126,24 @@ def getSimilarImages():
         directionality_normal = np.divide(directionality, directionality_sum)
         
         gabor = eval(json.loads(image[9]))
-        print(gabor)
         gabor_means = gabor["mean"]
         gabor_std = gabor["std"]
         gabor_data = np.add(gabor_means, gabor_std)
-        final_array.extend( np.add(np.add(np.add(np.add(np.add(np.add(np.add(np.add(np.add(np.add(np.add(np.add(histR_normal,histG_normal), histB_normal), mean_l_normal), mean_a_normal), mean_b_normal), contrast_normal), roughness_normal), linelikeness_normal), coarseness_normal), regularity_normal), directionality_normal ), gabor_data))
+        final_array.extend(histR_normal)
+        final_array.extend(histG_normal)
+        final_array.extend(histB_normal)
+        final_array.extend([mean_l_normal])
+        final_array.extend([mean_a_normal])
+        final_array.extend([mean_b_normal])
+        final_array.extend([contrast_normal])
+        final_array.extend([roughness_normal])
+        final_array.extend([linelikeness_normal])
+        final_array.extend([coarseness_normal])
+        final_array.extend([regularity_normal])
+        final_array.extend([directionality_normal])
+        final_array.extend(gabor_data)
 
-    # print(len(final_array))
+    print(final_array)
 
     
     # Close the cursor and connection
