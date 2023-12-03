@@ -4,7 +4,13 @@
                 <div class="w-[70%]">
                     @if ($picture != null)
                     <img id="main-pic" src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
-                    <button id="crop_button">click to crop</button>
+                    <form class="flex disabled place-content-between" wire:submit="crop">
+                        <input id="x" class="w-[100px] text-black " type="text" wire:model="cropX" />
+                        <input id="y" class="w-[100px] text-black " type="text" wire:model="cropY" value="" disabled />
+                        <input id="width" class="w-[100px] text-black " type="text" wire:model="cropWidth" value="" disabled/>
+                        <input  id="height" class="w-[100px] text-black " type="text" wire:model="cropHeight" value="" disabled/>
+                        <button id="crop_button" type="submit"> Crop </button>
+                    </form>
                     @else
                     <h3>Please select an image from the uploaded files above.</h3>
                     @endif
@@ -58,9 +64,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h2>Gabor</h2>
-                <h6></h6>
-                <canvas id="gabor_canvas"></canvas>
             </div>
         </div>
     </div>
@@ -129,16 +132,15 @@
         // color moment canvas
         const color_moment_canvas = document.getElementById('color_moment_canvas');
         let color_moment_data = JSON.parse(@json($color_moment_data));
-        
 
         new Chart(color_moment_canvas, {
             type: 'bar',
             data: {
-                labels: ["mean_I", "mean_b", "mean_a"],
+                labels: Object.keys(color_moment_data),
                 datasets: [
                     {
                         label: 'Line 1',
-                        data: color_moment_data,
+                        data: Object.values(color_moment_data),
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1,
                         pointBorderWidth: 0.2,
@@ -156,26 +158,6 @@
         });
 
 
-// cropper js
-//
-//
-
-
-        // const image = document.getElementById('main-pic');
-        // const cropper = new Cropper(image, {
-        //     aspectRatio: 16 / 9,
-        //     crop(event) {
-        //         console.log(event.detail.x);
-        //         console.log(event.detail.y);
-        //         console.log(event.detail.width);
-        //         console.log(event.detail.height);
-        //         console.log(event.detail.rotate);
-        //         console.log(event.detail.scaleX);
-        //         console.log(event.detail.scaleY);
-        //     },
-        //     modal: false
-        // });
-
 
         croppedData = {};
         const imageToCrop = document.querySelector("#main-pic");
@@ -190,14 +172,18 @@
                         width: data.width,
                         height: data.height
                     };
+                    document.getElementById('x').value = data.x;
+                    document.getElementById('y').value = data.y;
+                    document.getElementById('width').value = data.width;
+                    document.getElementById('height').value = data.height;
                 }
             });
         } else {
             console.error("Image element not found");
         }
-        const cropButton = document.querySelector("#crop_button"); // Replace with your actual button ID
-        cropButton.addEventListener("click", function () {
+        // const cropButton = document.querySelector("#crop_button"); // Replace with your actual button ID
+        // cropButton.addEventListener("click", function () {
 
-            console.log("Cropped Data:", croppedData);
-        });
+        //     console.log("Cropped Data:", croppedData);
+        // });
 </script>
