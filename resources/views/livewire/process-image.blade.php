@@ -10,10 +10,12 @@
                     <h3>Please select an image from the uploaded files above.</h3>
                     @endif
                 </div>
-                <div class="flex flex-wrap  ">
-                    @foreach ( $similar_images as $image )
-                    <img src="{{ asset('storage/' . $image->name ) }}" class="w-[150px] h-auto">
-                    @endforeach
+                <div class="flex gap-4 flex-wrap  ">
+@forelse ($similar_images as $image)
+        <img src="{{ asset('storage/' . $image) }}" class="w-[150px] h-auto">
+@empty
+    <!-- Handle the case where $similar_images is empty -->
+@endforelse
                 </div>
             </div>
             <div class="w-[30vw]">

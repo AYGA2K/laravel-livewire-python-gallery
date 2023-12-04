@@ -1,4 +1,3 @@
-<!-- resources/views/livewire/add-category.blade.php -->
 <div class="mx-auto">
     @if ($successMessage)
     <div class="bg-green-200 text-green-800 p-2 rounded-md mb-4">{{ $successMessage }}</div>

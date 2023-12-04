@@ -36,12 +36,3 @@
 
     </div>
 
-@script
-<script>
-
-    document.addEventListener('livewire:load', function () {
-        console.log('LIVewire loaded');
-        console.log(this.$wire.foo);
-    });
-</script>
-@endscript

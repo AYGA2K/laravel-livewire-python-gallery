@@ -7,6 +7,7 @@ use App\Models\Image;
 
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class ImageViewer extends Component
 {
@@ -24,6 +25,15 @@ class ImageViewer extends Component
             $this->images = Image::where('user_id', auth()->user()->id)->where('category_id', $category->id)->get();
         }
     }
+ public function deleteImage($imageId)
+    {
+        $imageToBeDeleted=Image::find($imageId);
+        Storage::disk('public')->delete($imageToBeDeleted->name);
+        Image::destroy($imageId);
+
+        $this->loadImagesByCategory();
+    }
+
 
     public function processImage($imageId)
     {

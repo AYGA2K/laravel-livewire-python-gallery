@@ -36,9 +36,12 @@ class ProcessingImage extends Component
 
     public function mount($imageId)
     {
-        $this->similar_images = Image::where('user_id', auth()->user()->id)->get();
-        $this->imageId = $imageId;
         $this->image = Image::find($imageId);
+        $response= Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name );
+           $data = $response->json();
+        $this->similar_images = array_keys($data);
+
+        $this->imageId = $imageId;
         $this->dataR = json_decode($this->image->HistoR);
         $this->dataB = json_decode($this->image->HistoB);
         $this->dataG = json_decode($this->image->HistoG);
