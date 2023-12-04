@@ -10,18 +10,29 @@ class ProcessingImage extends Component
 {
     public $imageId;
     public $picture;
-
+    public $showCropForm = false;
     public $imageInfo, $image;
     public $similar_images;
     public  $dataB, $dataR, $dataG, $roughness, $contrast, $linelikeness,  $coarseness, $regularity;
     public $histogram_data , $gabor_data, $trauma_data, $color_moment_data ,$directionality ;
-    public $cropX , $cropY  , $cropWidth , $cropHeight ;
-
-    public function crop() {
-        //dd([$this->cropX , $this->cropY  , $this->cropWidth , $this->cropHeight ]);
-        //Http::get("127.0.0.1:5000/cropImage?imageName=" . $this->image->name . ",x=" . $this->cropX . ",y=" . $this->cropY .",width=" . $this->cropWidth . ",height=". $this->cropHeight)->body();
-        Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name )->body();
+        public function cropImage($imageId)
+    {
+        // redirect to the image process page
+        return redirect('/crop/' . $imageId);
     }
+
+
+
+      public function toggleCropForm()
+    {
+        $this->showCropForm = !$this->showCropForm;
+    }
+
+//    public function crop() {
+ //       dd([$this->cropX , $this->cropY  , $this->cropWidth , $this->cropHeight ]);
+        //Http::get("127.0.0.1:5000/cropImage?imageName=" . $this->image->name . ",x=" . $this->cropX . ",y=" . $this->cropY .",width=" . $this->cropWidth . ",height=". $this->cropHeight)->body();
+   //     Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name )->body();
+  //  }
 
     public function mount($imageId)
     {

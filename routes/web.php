@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ProcessingImage;
+use App\Livewire\ImageCropper;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,9 @@ Route::get('/process/{imageId}', ProcessingImage::class)
     ->middleware(['auth'])
     ->name('process-image');
 
+Route::get('/crop/{imageId}',ImageCropper::class)
+    ->middleware(['auth'])
+    ->name('crop-image');
 
 
 require __DIR__ . '/auth.php';

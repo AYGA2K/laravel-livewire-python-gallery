@@ -1,6 +1,3 @@
-#! /usr/bin/python3
-
-
 import json
 import os
 import cv2
@@ -11,7 +8,11 @@ from flask import Flask, request, jsonify
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import mysql.connector
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -20,26 +21,27 @@ sharedFolder = "./public/storage/"
 
 # Connect to the MySQL database
 connection = mysql.connector.connect(
-    host='localhost',
-    user='makarov',
-    password='19841984',
-    database='laravel'
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USERNAME"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_DATABASE"),
+    port=os.getenv("DB_PORT"),
 )
 
-@app.route("/preprocessing", methods=["GET"])
-def getRGBHistogram():
 
+@app.route("/preprocessing", methods=["GET"])
+def preprocessing():
     imageName = request.args.get("imageName")
-    
+
     # Check if imageName is provided
     if imageName is None:
         return jsonify({"error": "Image name not provided"})
 
     (histR, histG, histB) = getRGBHistogram(imageName)
-    (histR, histG, histB) = (json.dumps(histR), json.dumps(histG), json.dumps(histB))    
+    (histR, histG, histB) = (json.dumps(histR), json.dumps(histG), json.dumps(histB))
     ColorsMoment = json.dumps(getColorsMoment(imageName))
-    trauma =json.dumps(getTraumaCharacteristics(imageName))
-    gabor =json.dumps(getGaborData(imageName))
+    trauma = json.dumps(getTraumaCharacteristics(imageName))
+    gabor = json.dumps(getGaborData(imageName))
 
     # Update data in the table
     update_data_query = "UPDATE images SET HistoR = %s, HistoG = %s, HistoB = %s, ColorM = %s, Trauma = %s, Gabor = %s WHERE name = %s"
@@ -47,26 +49,129 @@ def getRGBHistogram():
     # Create a cursor to interact with the database
     cursor = connection.cursor()
 
-    # cursor.execute(update_data_query, (histoRGB) , (ColorsMoment) , (trauma) ,(gabor))
-    print(imageName)
-    
-    cursor.execute(update_data_query, (histR, histG, histB , ColorsMoment, trauma, gabor, imageName))
+    cursor.execute(
+        update_data_query, (histR, histG, histB, ColorsMoment, trauma, gabor, imageName)
+    )
 
     # Commit the changes
     connection.commit()
 
     # Close the cursor and connection
     cursor.close()
-#    connection.close()
 
     return "success"
 
 
-def getRGBHistogram(name):
+# To find similar images
+def getAllDataAsOneArray(image):
+    array_result = []
 
+    # Cll each function to get the relevant JSON strings
+    histR = eval(json.loads(image[4]))
+    histR_normalized = np.divide(histR, np.sum(histR))
+    histG = eval(json.loads(image[5]))
+    histG_normalized = np.divide(histG, np.sum(histG))
+    histB = eval(json.loads(image[6]))
+    histB_normalized = np.divide(histB, np.sum(histB))
+    # colors moment (3):
+    colorM = eval(json.loads(image[7]))
+    mean_l_normalized = np.divide(colorM["mean_l"], np.sum(colorM["mean_l"]))
+    mean_a_normalized = np.divide(colorM["mean_a"], np.sum(colorM["mean_a"]))
+    mean_b_normalized = np.divide(colorM["mean_b"], np.sum(colorM["mean_b"]))
+
+    # Trauma characteristics (6):
+    trauma = eval(json.loads(image[8]))
+    contrast_normalized = np.divide(trauma["contrast"], np.sum(trauma["contrast"]))
+    roughness_normalized = np.divide(trauma["roughness"], np.sum(trauma["roughness"]))
+    linelikeness_normalized = np.divide(
+        trauma["linelikeness"], np.sum(trauma["linelikeness"])
+    )
+    regularity_normalized = np.divide(
+        trauma["regularity"], np.sum(trauma["regularity"])
+    )
+    coarseness_normalized = np.divide(
+        trauma["coarseness"], np.sum(trauma["coarseness"])
+    )
+    directionality_normalized = np.divide(
+        trauma["directionality"], np.sum(trauma["directionality"])
+    )
+
+    # Gabor data as two arrays of size 12 for means && stds:
+    gabor = eval(json.loads(image[9]))
+    array_result.extend(histR_normalized)
+    array_result.extend(histG_normalized)
+    array_result.extend(histB_normalized)
+    array_result.extend([mean_l_normalized])
+    array_result.extend([mean_a_normalized])
+    array_result.extend([mean_b_normalized])
+    array_result.extend([contrast_normalized])
+    array_result.extend([roughness_normalized])
+    array_result.extend([linelikeness_normalized])
+    array_result.extend([regularity_normalized])
+    array_result.extend([coarseness_normalized])
+    array_result.extend([directionality_normalized])
+    array_result.extend(gabor["mean"])
+    array_result.extend(gabor["std"])
+
+    return array_result
+
+
+@app.route("/getSimilarImages", methods=["GET"])
+def getimilarImages():
+    imageName = request.args.get("imageName")
+
+    # Check if imageName is provided
+    if imageName is None:
+        return jsonify({"error": "Image name not provided"})
+
+    # Create a cursor to interact with the database
+    cursor = connection.cursor()
+
+    select_query = "SELECT * FROM images where name = %s"
+    cursor.execute(select_query, (imageName,))
+
+    # fetch the selected image
+    selected_image = cursor.fetchone()
+
+    # Execute a SELECT query to get all images of specific user("selected image user_id"):
+    select_query = "SELECT * FROM images where user_id = %s"
+    cursor.execute(select_query, (selected_image[3],))
+
+    # Fetch all rows from the result set
+    result = cursor.fetchall()
+
+    # load user parameters for the similarity equation:
+    # Example:
+
+    poids = np.array([(1 / 801)] * 801)
+
+    selected_image_array = getAllDataAsOneArray(selected_image)
+
+    final_result = dict()
+
+    for image in result:
+        if image[1].__eq__(imageName):
+            continue
+
+        current_array = np.array(getAllDataAsOneArray(image))
+        result = sum(np.linalg.norm(current_array - selected_image_array) * poids)
+
+        final_result[image[1]] = result
+
+    sorted_dict = dict(
+        sorted(final_result.items(), key=lambda item: item[1], reverse=True)
+    )
+
+    # Close the cursor and connection
+    cursor.close()
+
+    return json.JSONEncoder().encode(sorted_dict)
+
+
+def getRGBHistogram(name):
     # Load the image
     image = cv2.imread(sharedFolder + name)
-    
+
     # Check if the image is loaded successfully
     if image is None:
         print("Failed to load the image from the storage.")
@@ -78,13 +183,20 @@ def getRGBHistogram(name):
     histR = cv2.calcHist([image], [2], None, [256], [0, 256])
 
     # Prepare response data
-    histR , histG, histB = histR.flatten().tolist(), histG.flatten().tolist(), histB.flatten().tolist() 
-    
-    return (json.JSONEncoder().encode(histR), json.JSONEncoder().encode(histG), json.JSONEncoder().encode(histB)) 
+    histR, histG, histB = (
+        histR.flatten().tolist(),
+        histG.flatten().tolist(),
+        histB.flatten().tolist(),
+    )
+
+    return (
+        json.JSONEncoder().encode(histR),
+        json.JSONEncoder().encode(histG),
+        json.JSONEncoder().encode(histB),
+    )
 
 
 def getColorsMoment(name):
-
     # Load the image
     image = cv2.imread(sharedFolder + name)
 
@@ -111,7 +223,6 @@ def getColorsMoment(name):
 
 @app.route("/getClusteringByRGBcolors", methods=["GET"])
 def getClusteringByRGBcolors():
-
     imageName = request.args.get("imageName")
 
     # Check if imageName is provided
@@ -153,7 +264,6 @@ def getClusteringByRGBcolors():
 
 
 def getTraumaCharacteristics(name):
-
     # Load the image
     image = cv2.imread(sharedFolder + name)
 
@@ -185,12 +295,10 @@ def getTraumaCharacteristics(name):
         "roughness": roughness,
     }
 
-    
     return json.JSONEncoder().encode(response_data)
 
 
 def getGaborData(name):
-
     # Load the image
     image = cv2.imread(sharedFolder + name)
 
@@ -251,10 +359,10 @@ def getGaborData(name):
         stat["mean"] = normalized_means[i][0]
         stat["std"] = normalized_stds[i][0]
 
-    # Return the statistics as clean JSON using Flask's jsonify
-    #
-    
-    return json.JSONEncoder().encode(statistics)
+    # Return the statistics as clean JSON
+    return json.JSONEncoder().encode(
+        {"mean": means.flatten().tolist(), "std": stds.flatten().tolist()}
+    )
 
 
 @app.route("/cropImage", methods=["GET"])
@@ -338,4 +446,3 @@ def resizeImage():
 
 if __name__ == "__main__":
     app.run()
-

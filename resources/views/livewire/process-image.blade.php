@@ -1,21 +1,16 @@
-    <div class="container mx-auto text-white border-box">
-        <div class="flex mt-12 space-x-12">
-            <div class="flex flex-col gap-[20px] w-[70vw]">
-                <div class="w-[70%]">
+    <div class=" container mx-auto text-white border-box">
+        <div class="flex  justify-center items-center gap-x-28 py-4  ">
+            <div class="flex flex-col">
+                <div class=" ">
                     @if ($picture != null)
                     <img id="main-pic" src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
-                    <form class="flex disabled place-content-between" wire:submit="crop">
-                        <input id="x" class="w-[100px] text-black " type="text" wire:model="cropX" />
-                        <input id="y" class="w-[100px] text-black " type="text" wire:model="cropY" value="" disabled />
-                        <input id="width" class="w-[100px] text-black " type="text" wire:model="cropWidth" value="" disabled/>
-                        <input  id="height" class="w-[100px] text-black " type="text" wire:model="cropHeight" value="" disabled/>
-                        <button id="crop_button" type="submit"> Crop </button>
-                    </form>
+                 <button  class="bg-green-500 m-4  hover:bg-green-700 text-white font-bold py-2 px-4 rounded" wire:click="cropImage({{$picture->id}})">Crop this image</button>
+
                     @else
                     <h3>Please select an image from the uploaded files above.</h3>
                     @endif
                 </div>
-                <div class="flex flex-wrap gap-[20px]">
+                <div class="flex flex-wrap  ">
                     @foreach ( $similar_images as $image )
                     <img src="{{ asset('storage/' . $image->name ) }}" class="w-[150px] h-auto">
                     @endforeach
@@ -28,8 +23,6 @@
                 <h2>Color Moment</h2>
                 <h6></h6>
                 <canvas id="color_moment_canvas"></canvas>
-                <h2>Indices</h2>
-                <h6>This is a damn index </h6>
                 <h2>Trauma</h2>
                 <table class="border-box border border-gray-300 mt-[40px] whitespace-pre-line " >
                     <thead>
@@ -74,16 +67,16 @@
         // histogram canvas
         const ctx = document.getElementById('historgram_canvas');
 
-        var dataR = {{$dataR}}; 
+        var dataR = {{$dataR}};
         var dataG = {{$dataG}};
         var dataB = {{$dataB}};
 
 
         var labels = [] ;
-        
+
         for (iii = 0 ; iii < 255 ; iii++)
             labels.push(iii);
-        
+
         var chart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -127,7 +120,7 @@
         });
 
 
-    
+
 
         // color moment canvas
         const color_moment_canvas = document.getElementById('color_moment_canvas');
@@ -159,31 +152,4 @@
 
 
 
-        croppedData = {};
-        const imageToCrop = document.querySelector("#main-pic");
-        if (imageToCrop) {
-            const cropper = new Cropper(imageToCrop, {
-                aspectRatio: 1,
-                crop: function (e) {
-                    var data = e.detail;
-                    croppedData = {
-                        x: data.x,
-                        y: data.y,
-                        width: data.width,
-                        height: data.height
-                    };
-                    document.getElementById('x').value = data.x;
-                    document.getElementById('y').value = data.y;
-                    document.getElementById('width').value = data.width;
-                    document.getElementById('height').value = data.height;
-                }
-            });
-        } else {
-            console.error("Image element not found");
-        }
-        // const cropButton = document.querySelector("#crop_button"); // Replace with your actual button ID
-        // cropButton.addEventListener("click", function () {
-
-        //     console.log("Cropped Data:", croppedData);
-        // });
 </script>
