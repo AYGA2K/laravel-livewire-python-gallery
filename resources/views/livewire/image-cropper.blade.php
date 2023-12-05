@@ -1,11 +1,13 @@
-<div>
-    <img id="main-pic" src="{{ asset('storage/' . $picture->name) }}" class="w-[500px] h-auto">
-
-        <input id="x" class="w-[100px] text-black" type="text" wire:model="cropX" disabled />
+<div class="container mx-auto my-4 ">
+    <img id="main-pic"  src="{{ asset('storage/' . $picture->name) }}" class="w-[500px]  h-auto">
+<div  class="container mx-auto my-4 ">
+        <input id="x" class="w-[100px]  text-black" type="text" wire:model="cropX" disabled />
         <input id="y" class="w-[100px] text-black" type="text" wire:model="cropY" disabled />
         <input id="width" class="w-[100px] text-black" type="text" wire:model="cropWidth" disabled />
         <input id="height" class="w-[100px] text-black" type="text" wire:model="cropHeight" disabled />
         <button id="crop_button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Crop</button>
+
+  </div>
      <img id="cropped-pic" src="" class="w-[500px] h-auto">
 <script>
     const imageToCrop = document.querySelector("#main-pic");
