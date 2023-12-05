@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class ImageCropper extends Component
 {
-   public $cropX , $cropY  , $cropWidth , $cropHeight ;
+    public $cropX, $cropY, $cropWidth, $cropHeight;
 
-   public $imageId;
-   public $picture;
-   protected $listeners = ['updateCropData'];
+    public $imageId;
+    public $picture;
+    protected $listeners = ['updateCropData'];
 
     public function updateCropData($data)
     {
@@ -20,17 +20,17 @@ class ImageCropper extends Component
         $this->cropHeight = $data['height'];
     }
 
-   public function crop(){
-       dd($this->cropX , $this->cropY , $this->cropWidth , $this->cropHeight);
-
-   }
-   public function mount($imageId){
-       $this->imageId = $imageId;
-   }
+    public function crop()
+    {
+    }
+    public function mount($imageId)
+    {
+        $this->imageId = $imageId;
+    }
 
     public function render()
     {
-                $this->picture = \App\Models\Image::find($this->imageId);
+        $this->picture = \App\Models\Image::find($this->imageId);
         return view('livewire.image-cropper')->layout('layouts.app');
     }
 }

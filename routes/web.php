@@ -32,7 +32,7 @@ Route::get('/process/{imageId}', ProcessingImage::class)
     ->middleware(['auth'])
     ->name('process-image');
 
-Route::get('/crop/{imageId}',ImageCropper::class)
+Route::get('/crop/{imageId}', ImageCropper::class)
     ->middleware(['auth'])
     ->name('crop-image');
 
