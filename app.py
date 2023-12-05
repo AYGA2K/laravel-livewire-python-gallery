@@ -11,6 +11,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 from flask_cors import CORS
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -391,15 +392,16 @@ def cropImage():
     cropped_image = image[y : y + height, x : x + width]
 
     if cropped_image is not None:
-        cropped_image_path = os.path.join(
-            sharedFolder, "cropped_" + str(time.time()) + imageName
-        )
-        cv2.imwrite(cropped_image_path, cropped_image)
+        ext = imageName.split(".")[-1]
+        print(ext)
+        cropped_image_name = "images/cropped_" + str(time.time()) + "." + ext
+        cropped_image_path = os.path.join(sharedFolder + cropped_image_name)
+        print(cv2.imwrite(cropped_image_path, cropped_image))
 
         return jsonify(
             {
                 "success": "Image cropped and saved successfully",
-                "cropped_image_path": cropped_image_path,
+                "cropped_image_path": cropped_image_name,
             }
         )
     else:
