@@ -119,55 +119,58 @@ def getAllDataAsOneArray(image):
 
 
 @app.route("/getSimilarImages", methods=["GET"])
-def getimilarImages():
+def getSimilarImages():
     imageName = request.args.get("imageName")
 
     # Check if imageName is provided
     if imageName is None:
-        return jsonify({"error": "Image name not provided"})
+        return jsonify({"error": "Image name not provided"}), 400
 
-    # Create a cursor to interact with the database
+    # Ensure a valid database connection is established
     cursor = connection.cursor()
 
-    select_query = "SELECT * FROM images where name = %s"
-    cursor.execute(select_query, (imageName,))
+    try:
+        # Retrieve selected image
+        select_query = "SELECT * FROM images WHERE name = %s"
+        cursor.execute(select_query, (imageName,))
+        selected_image = cursor.fetchone()
 
-    # fetch the selected image
-    selected_image = cursor.fetchone()
+        # Retrieve images of the same user
+        select_query = "SELECT * FROM images WHERE user_id = %s"
+        cursor.execute(select_query, (selected_image[3],))
+        result = cursor.fetchall()
 
-    # Execute a SELECT query to get all images of specific user("selected image user_id"):
-    select_query = "SELECT * FROM images where user_id = %s"
-    cursor.execute(select_query, (selected_image[3],))
+        # Load user parameters for the similarity equation
+        poids = np.array([(1 / 801)] * 801)
+        selected_image_array = getAllDataAsOneArray(selected_image)
 
-    # Fetch all rows from the result set
-    result = cursor.fetchall()
+        final_result = dict()
 
-    # load user parameters for the similarity equation:
-    # Example:
+        for image in result:
+            if image[1] == imageName:
+                continue
 
-    poids = np.array([(1 / 801)] * 801)
+            current_array = np.array(getAllDataAsOneArray(image))
+            similarity = sum(
+                np.linalg.norm(current_array - selected_image_array) * poids
+            )
 
-    selected_image_array = getAllDataAsOneArray(selected_image)
+            final_result[image[1]] = similarity
 
-    final_result = dict()
+        # Sort the results by similarity
+        sorted_dict = dict(
+            sorted(final_result.items(), key=lambda item: item[1], reverse=True)
+        )
 
-    for image in result:
-        if image[1].__eq__(imageName):
-            continue
+        return jsonify(sorted_dict)
 
-        current_array = np.array(getAllDataAsOneArray(image))
-        result = sum(np.linalg.norm(current_array - selected_image_array) * poids)
+    except Exception as e:
+        # Handle exceptions (log, return an error response, etc.)
+        return jsonify({"error": str(e)}), 500
 
-        final_result[image[1]] = result
-
-    sorted_dict = dict(
-        sorted(final_result.items(), key=lambda item: item[1], reverse=True)
-    )
-
-    # Close the cursor and connection
-    cursor.close()
-
-    return json.JSONEncoder().encode(sorted_dict)
+    finally:
+        # Close the cursor and connection
+        cursor.close()
 
 
 def getRGBHistogram(name):
@@ -257,7 +260,7 @@ def getClusteringByRGBcolors():
 
     # Convert the histogram data to JSON
     histogram_data = {
-            hex_color: int(count) for hex_color, count in zip(hex_colors, color_counts)
+        hex_color: int(count) for hex_color, count in zip(hex_colors, color_counts)
     }
 
     return json.JSONEncoder().encode(histogram_data)
