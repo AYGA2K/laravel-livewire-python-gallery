@@ -239,7 +239,7 @@ def getClusteringByRGBcolors():
         print("Failed to load the image from the storage.")
         return jsonify({"error": "Failed to load the image from the storage"})
 
-    k = int(request.args.get("k"))
+    k = 3
 
     # Perform clustering
     examples = image.reshape((image.shape[0] * image.shape[1], 3))
@@ -257,9 +257,7 @@ def getClusteringByRGBcolors():
 
     # Convert the histogram data to JSON
     histogram_data = {
-        "color_counts": {
             hex_color: int(count) for hex_color, count in zip(hex_colors, color_counts)
-        }
     }
 
     return json.JSONEncoder().encode(histogram_data)

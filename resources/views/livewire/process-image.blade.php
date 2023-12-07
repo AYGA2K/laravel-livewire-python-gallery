@@ -1,5 +1,5 @@
     <div class=" container mx-auto text-white border-box">
-        <div class="flex  justify-center items-center gap-x-28 py-4  ">
+        <div class="flex   gap-x-28 py-4  ">
             <div class="flex flex-col">
                 <div class=" ">
                     @if ($picture != null)
@@ -18,15 +18,15 @@
 @endforelse
                 </div>
             </div>
-            <div class="w-[30vw]">
+            <div class="flex flex-col gap-4">
                 <h2>Histogram</h2>
-                <h6></h6>
                 <canvas id="historgram_canvas"></canvas>
                 <h2>Color Moment</h2>
-                <h6></h6>
                 <canvas id="color_moment_canvas"></canvas>
+                <h2>Clustering Data </h2>
+                <canvas id="clustering_canvas"></canvas>
                 <h2>Trauma</h2>
-                <table class="border-box border border-gray-300 mt-[40px] whitespace-pre-line " >
+                <table class="border-box border border-gray-300 whitespace-pre-line " >
                     <thead>
                         <tr>
                             <th class="py-2 px-4 border-b">contrast</th>
@@ -65,10 +65,36 @@
 
 
     <script type="text/javascript">
+        // clustering canvas
+         const clustering_canvas = document.getElementById('clustering_canvas');
+          var clustringData= @json($ClusteringData);
+                 new Chart(clustering_canvas, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(clustringData),
+                datasets: [
+                    {
+                        label: 'Line 1',
+                        data: Object.values(clustringData),
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        pointBorderWidth: 0.2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        stacked: false,
+                    }
+                }
+            }
+        });
+
 
         // histogram canvas
         const ctx = document.getElementById('historgram_canvas');
-
         var dataR = {{$dataR}};
         var dataG = {{$dataG}};
         var dataB = {{$dataB}};

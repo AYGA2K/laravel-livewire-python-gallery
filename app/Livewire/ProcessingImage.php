@@ -14,31 +14,24 @@ class ProcessingImage extends Component
     public $imageInfo, $image;
     public $similar_images;
     public  $dataB, $dataR, $dataG, $roughness, $contrast, $linelikeness,  $coarseness, $regularity;
-    public $histogram_data , $gabor_data, $trauma_data, $color_moment_data ,$directionality ;
-        public function cropImage($imageId)
+    public $histogram_data, $gabor_data, $trauma_data, $color_moment_data, $directionality;
+    public $ClusteringData;
+    public function cropImage($imageId)
     {
         // redirect to the image process page
         return redirect('/crop/' . $imageId);
     }
+  public function getClusteringByRGBcolors($imageName){
+      $response = Http::get("127.0.0.1:5000/getClusteringByRGBcolors?imageName=" . $imageName);
+      $this->ClusteringData = $response->json();
+  }
 
-
-
-      public function toggleCropForm()
-    {
-        $this->showCropForm = !$this->showCropForm;
-    }
-
-//    public function crop() {
- //       dd([$this->cropX , $this->cropY  , $this->cropWidth , $this->cropHeight ]);
-        //Http::get("127.0.0.1:5000/cropImage?imageName=" . $this->image->name . ",x=" . $this->cropX . ",y=" . $this->cropY .",width=" . $this->cropWidth . ",height=". $this->cropHeight)->body();
-   //     Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name )->body();
-  //  }
 
     public function mount($imageId)
     {
         $this->image = Image::find($imageId);
-        $response= Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name );
-           $data = $response->json();
+        $response = Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $this->image->name);
+        $data = $response->json();
         $this->similar_images = array_keys($data);
 
         $this->imageId = $imageId;
@@ -53,8 +46,9 @@ class ProcessingImage extends Component
         $this->coarseness = $this->trauma_data->coarseness;
         $this->linelikeness = $this->trauma_data->linelikeness;
         $this->regularity = $this->trauma_data->regularity;
-        $this->roughness= $this->trauma_data->roughness;
-        $this->color_moment_data = json_decode($this->image->ColorM) ;
+        $this->roughness = $this->trauma_data->roughness;
+        $this->color_moment_data = json_decode($this->image->ColorM);
+        $this->getClusteringByRGBcolors($this->image->name);
     }
     public function render()
     {
@@ -63,5 +57,4 @@ class ProcessingImage extends Component
             'livewire.process-image'
         )->layout('layouts.app');
     }
-
 }
