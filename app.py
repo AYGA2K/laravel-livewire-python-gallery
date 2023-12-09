@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 import os
 from flask_cors import CORS
 
+from sklearn.metrics.pairwise import cosine_similarity
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -118,59 +120,57 @@ def getAllDataAsOneArray(image):
     return array_result
 
 
+# Constants
+NUM_FEATURES = 801
+
+
+def calculate_similarity(image1, image2):
+    array1 = np.array(getAllDataAsOneArray(image1)).reshape(1, -1)
+    array2 = np.array(getAllDataAsOneArray(image2)).reshape(1, -1)
+    return cosine_similarity(array1, array2)[0, 0]
+
+
 @app.route("/getSimilarImages", methods=["GET"])
 def getSimilarImages():
-    imageName = request.args.get("imageName")
-
-    # Check if imageName is provided
-    if imageName is None:
-        return jsonify({"error": "Image name not provided"}), 400
-
-    # Ensure a valid database connection is established
-    cursor = connection.cursor()
-
     try:
-        # Retrieve selected image
-        select_query = "SELECT * FROM images WHERE name = %s"
-        cursor.execute(select_query, (imageName,))
-        selected_image = cursor.fetchone()
+        # Input validation
+        imageName = request.args.get("imageName")
+        if not imageName:
+            return jsonify({"error": "Image name not provided"}), 400
 
-        # Retrieve images of the same user
-        select_query = "SELECT * FROM images WHERE user_id = %s"
-        cursor.execute(select_query, (selected_image[3],))
-        result = cursor.fetchall()
+        # Ensure a valid database connection is established
+        with connection.cursor() as cursor:
+            # Retrieve selected image
+            select_query = "SELECT * FROM images WHERE name = %s"
+            cursor.execute(select_query, (imageName,))
+            selected_image = cursor.fetchone()
 
-        # Load user parameters for the similarity equation
-        poids = np.array([(1 / 801)] * 801)
-        selected_image_array = getAllDataAsOneArray(selected_image)
+            # Retrieve images of the same user
+            select_query = "SELECT * FROM images WHERE user_id = %s"
+            cursor.execute(select_query, (selected_image[3],))
+            result = cursor.fetchall()
 
-        final_result = dict()
+            final_result = {}
 
-        for image in result:
-            if image[1] == imageName:
-                continue
+            for image in result:
+                if image[1] == imageName:
+                    continue
 
-            current_array = np.array(getAllDataAsOneArray(image))
-            similarity = sum(
-                np.linalg.norm(current_array - selected_image_array) * poids
+                similarity = calculate_similarity(selected_image, image)
+                final_result[image[1]] = similarity
+
+            # Sort the results by similarity
+            sorted_dict = dict(
+                sorted(final_result.items(), key=lambda item: item[1], reverse=True)[
+                    :10
+                ]
             )
 
-            final_result[image[1]] = similarity
-
-        # Sort the results by similarity
-        sorted_dict = dict(
-            sorted(final_result.items(), key=lambda item: item[1], reverse=True)
-        )
-
-        return jsonify(sorted_dict)
+            return jsonify(sorted_dict)
 
     except Exception as e:
-        # Handle exceptions (log, return an error response, etc.)
+        # Log the exception for debugging purposes
         return jsonify({"error": str(e)}), 500
-
-    finally:
-        # Close the cursor and connection
-        cursor.close()
 
 
 def getRGBHistogram(name):
