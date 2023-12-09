@@ -120,10 +120,6 @@ def getAllDataAsOneArray(image):
     return array_result
 
 
-# Constants
-NUM_FEATURES = 801
-
-
 def calculate_similarity(image1, image2):
     array1 = np.array(getAllDataAsOneArray(image1)).reshape(1, -1)
     array2 = np.array(getAllDataAsOneArray(image2)).reshape(1, -1)
@@ -146,8 +142,16 @@ def getSimilarImages():
             selected_image = cursor.fetchone()
 
             # Retrieve images of the same user
-            select_query = "SELECT * FROM images WHERE user_id = %s"
-            cursor.execute(select_query, (selected_image[3],))
+            select_query = (
+                "SELECT * FROM images WHERE user_id = %s and category_id = %s"
+            )
+            cursor.execute(
+                select_query,
+                (
+                    selected_image[3],
+                    selected_image[2],
+                ),
+            )
             result = cursor.fetchall()
 
             final_result = []

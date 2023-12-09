@@ -25,7 +25,7 @@
                 <canvas id="color_moment_canvas"></canvas>
                 <h2>Clustering Data </h2>
                 <canvas id="clustering_canvas"></canvas>
-                <h2>Trauma</h2>
+                <h2>Tamura</h2>
                 <table class="border-box border border-gray-300 whitespace-pre-line " >
                     <thead>
                         <tr>
@@ -113,7 +113,7 @@
                     {
                         label: 'Line 1',
                         data: dataB,
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderColor: 'cyan',
                         borderWidth: 1,
                         pointBorderWidth: 0.2,
                         fill: false
@@ -121,7 +121,7 @@
                     {
                         label: 'Line 2',
                         data: dataR,
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgb(220,20,60)',
                         borderWidth: 1,
                         pointBorderWidth: 0.2,
                         fill: false
@@ -129,7 +129,7 @@
                     {
                         label: 'Line 3',
                         data: dataG,
-                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderColor: 'green',
                         borderWidth: 1,
                         pointBorderWidth: 0.2,
                         fill: false
@@ -141,7 +141,7 @@
                     y: {
                         stacked: false,
                         suggestedMin: 0,
-                        suggestedMax: 255
+                        suggestedMax: 255,
                     }
                 }
             }

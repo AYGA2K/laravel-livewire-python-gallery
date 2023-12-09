@@ -1,6 +1,6 @@
 <div class="container mx-auto my-4 ">
     <img id="main-pic" src="{{ asset('storage/' . $picture->name) }}" class="w-[500px]  h-auto">
-    <div class="container mx-auto my-4 ">
+    <div class="flex justify-center items-center gap-x-6 my-4 ">
         <input id="x" class="w-[100px]  text-black" type="text" wire:model="cropX" disabled />
         <input id="y" class="w-[100px] text-black" type="text" wire:model="cropY" disabled />
         <input id="width" class="w-[100px] text-black" type="text" wire:model="cropWidth" disabled />
