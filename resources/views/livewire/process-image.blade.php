@@ -10,9 +10,9 @@
                     <h3>Please select an image from the uploaded files above.</h3>
                     @endif
                 </div>
-                <div class="flex gap-4 flex-wrap  ">
+                <div class="flex gap-4 flex-wrap  cursor-pointer ">
 @forelse ($similar_images as $image)
-        <img src="{{ asset('storage/' . $image) }}" class="w-[150px] h-auto">
+ <img src="{{ asset('storage/' . $image->name) }}" class="w-[150px] h-auto"   alt="Image {{ $image->id }}" wire:click="selectImage({{ $image->id }})" >
 @empty
     <!-- Handle the case where $similar_images is empty -->
 @endforelse

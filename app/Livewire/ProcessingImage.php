@@ -30,10 +30,18 @@ class ProcessingImage extends Component
         $response = Http::get("127.0.0.1:5000/getSimilarImages?imageName=" . $imageName);
 
         $data = $response->json();
-        $this->similar_images = array_keys($data);
+        $this->similar_images = array_map(function ($image) {
+        return (object)[
+            'id' => $image['id'],
+            'name' => $image['name'],
+            'similarity' => $image['similarity'],
+        ];
+    }, $data);
 
     }
-
+   public function selectImage($id){
+        return redirect('/process/' . $id);
+   }
     public function mount($imageId)
     {
         $this->image = Image::find($imageId);
@@ -52,7 +60,8 @@ class ProcessingImage extends Component
         $this->roughness = $this->trauma_data->roughness;
         $this->color_moment_data = json_decode($this->image->ColorM);
         $this->getClusteringByRGBcolors($this->image->name);
-     $this->getSimilarImages($this->image->name);
+        $this->getSimilarImages($this->image->name);
+
 
     }
     public function render()

@@ -150,23 +150,26 @@ def getSimilarImages():
             cursor.execute(select_query, (selected_image[3],))
             result = cursor.fetchall()
 
-            final_result = {}
+            final_result = []
 
             for image in result:
                 if image[1] == imageName:
                     continue
 
                 similarity = calculate_similarity(selected_image, image)
-                final_result[image[1]] = similarity
+                result_item = {
+                    "id": image[0],
+                    "name": image[1],
+                    "similarity": similarity,
+                }
+                final_result.append(result_item)
 
-            # Sort the results by similarity
-            sorted_dict = dict(
-                sorted(final_result.items(), key=lambda item: item[1], reverse=True)[
-                    :10
-                ]
-            )
+                # Sort the results by similarity
+            sorted_result = sorted(
+                final_result, key=lambda item: item["similarity"], reverse=True
+            )[:10]
 
-            return jsonify(sorted_dict)
+            return jsonify(sorted_result)
 
     except Exception as e:
         # Log the exception for debugging purposes
