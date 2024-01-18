@@ -1,0 +1,1012 @@
+1,00110054.obj,Mug
+2,08 Dune Series Trash Receptacle DS-TR.obj,Other
+3,3DMillenium_bottle01.obj,Modern-Bottle
+4,3DMillenium_bottle02.obj,Modern-Bottle
+5,3DMillenium_bottle04.obj,Modern-Bottle
+6,3DMillenium_bowl01.obj,Bowl
+7,3DMillenium_bowl03.obj,Bowl
+8,3DMillenium_budvase.obj,Modern-Vase
+9,3DMillenium_urn01.obj,Modern-Vase
+10,3DMillenium_urn02.obj,Modern-Vase
+11,3DMillenium_vase01.obj,Modern-Vase
+12,3DMillenium_vase02.obj,Modern-Vase
+13,3DMillenium_vase03.obj,Modern-Vase
+14,5DSOM_clay_vases_1.obj,Pelike
+15,5DSOM_clay_vases_2.obj,Modern-Vase
+16,5DSOM_clay_vases_3.obj,Modern-Bottle
+17,5DSOM_fakej.obj,Oinochoe
+18,897_vcg-amphora_simplified.obj,Amphora
+19,Abstractshape1.obj,Abstract
+20,Abstractshape10.obj,Abstract
+21,Abstractshape11.obj,Abstract
+22,Abstractshape12.obj,Abstract
+23,Abstractshape13.obj,Abstract
+24,Abstractshape14.obj,Abstract
+25,Abstractshape15.obj,Abstract
+26,Abstractshape16.obj,Abstract
+27,Abstractshape17.obj,Abstract
+28,Abstractshape18.obj,Abstract
+29,Abstractshape19.obj,Abstract
+30,Abstractshape2.obj,Abstract
+31,Abstractshape20.obj,Abstract
+32,Abstractshape21.obj,Abstract
+33,Abstractshape22.obj,Abstract
+34,Abstractshape23.obj,Abstract
+35,Abstractshape24.obj,Abstract
+36,Abstractshape25.obj,Abstract
+37,Abstractshape26.obj,Abstract
+38,Abstractshape27.obj,Abstract
+39,Abstractshape28.obj,Abstract
+40,Abstractshape29.obj,Abstract
+41,Abstractshape3.obj,Abstract
+42,Abstractshape30.obj,Abstract
+43,Abstractshape31.obj,Abstract
+44,Abstractshape32.obj,Abstract
+45,Abstractshape33.obj,Abstract
+46,Abstractshape34.obj,Abstract
+47,Abstractshape35.obj,Abstract
+48,Abstractshape36.obj,Abstract
+49,Abstractshape37.obj,Abstract
+50,Abstractshape38.obj,Abstract
+51,Abstractshape39.obj,Abstract
+52,Abstractshape4.obj,Abstract
+53,Abstractshape40.obj,Abstract
+54,Abstractshape41.obj,Abstract
+55,Abstractshape42.obj,Abstract
+56,Abstractshape43.obj,Abstract
+57,Abstractshape44.obj,Abstract
+58,Abstractshape45.obj,Abstract
+59,Abstractshape46.obj,Abstract
+60,Abstractshape47.obj,Abstract
+61,Abstractshape48.obj,Abstract
+62,Abstractshape49.obj,Abstract
+63,Abstractshape5.obj,Abstract
+64,Abstractshape50.obj,Abstract
+65,Abstractshape6.obj,Abstract
+66,Abstractshape7.obj,Abstract
+67,Abstractshape8.obj,Abstract
+68,Abstractshape9.obj,Abstract
+69,Alabastron1.obj,Alabastron
+70,Alabastron10.obj,Alabastron
+71,Alabastron11.obj,Alabastron
+72,Alabastron12.obj,Alabastron
+73,Alabastron13.obj,Alabastron
+74,Alabastron14.obj,Alabastron
+75,Alabastron15.obj,Alabastron
+76,Alabastron16.obj,Alabastron
+77,Alabastron17.obj,Alabastron
+78,Alabastron18.obj,Alabastron
+79,Alabastron19.obj,Alabastron
+80,Alabastron2.obj,Alabastron
+81,Alabastron20.obj,Alabastron
+82,Alabastron21.obj,Alabastron
+83,Alabastron22.obj,Alabastron
+84,Alabastron23.obj,Alabastron
+85,Alabastron24.obj,Alabastron
+86,Alabastron25.obj,Alabastron
+87,Alabastron26.obj,Alabastron
+88,Alabastron27.obj,Alabastron
+89,Alabastron28.obj,Alabastron
+90,Alabastron29.obj,Alabastron
+91,Alabastron3.obj,Alabastron
+92,Alabastron30.obj,Alabastron
+93,Alabastron31.obj,Alabastron
+94,Alabastron32.obj,Alabastron
+95,Alabastron33.obj,Alabastron
+96,Alabastron34.obj,Alabastron
+97,Alabastron35.obj,Alabastron
+98,Alabastron36.obj,Alabastron
+99,Alabastron37.obj,Alabastron
+100,Alabastron38.obj,Alabastron
+101,Alabastron39.obj,Alabastron
+102,Alabastron4.obj,Alabastron
+103,Alabastron40.obj,Alabastron
+104,Alabastron41.obj,Alabastron
+105,Alabastron42.obj,Alabastron
+106,Alabastron43.obj,Alabastron
+107,Alabastron44.obj,Alabastron
+108,Alabastron45.obj,Alabastron
+109,Alabastron46.obj,Alabastron
+110,Alabastron47.obj,Alabastron
+111,Alabastron48.obj,Alabastron
+112,Alabastron49.obj,Alabastron
+113,Alabastron5.obj,Alabastron
+114,Alabastron50.obj,Alabastron
+115,Alabastron6.obj,Alabastron
+116,Alabastron7.obj,Alabastron
+117,Alabastron8.obj,Alabastron
+118,Alabastron9.obj,Alabastron
+119,amforeas_hole.obj,Amphora
+120,ampho.obj,Modern-Vase
+121,Amphora1.obj,Amphora
+122,Amphora10.obj,Amphora
+123,Amphora11.obj,Amphora
+124,Amphora12.obj,Amphora
+125,Amphora13.obj,Amphora
+126,Amphora14.obj,Amphora
+127,Amphora15.obj,Amphora
+128,Amphora16.obj,Amphora
+129,Amphora17.obj,Amphora
+130,Amphora18.obj,Amphora
+131,Amphora19.obj,Amphora
+132,Amphora2.obj,Amphora
+133,Amphora20.obj,Amphora
+134,Amphora21.obj,Amphora
+135,Amphora22.obj,Amphora
+136,Amphora23.obj,Amphora
+137,Amphora24.obj,Amphora
+138,Amphora25.obj,Amphora
+139,Amphora26.obj,Amphora
+140,Amphora27.obj,Amphora
+141,Amphora28.obj,Amphora
+142,Amphora29.obj,Amphora
+143,Amphora3.obj,Amphora
+144,Amphora30.obj,Amphora
+145,Amphora31.obj,Amphora
+146,Amphora32.obj,Amphora
+147,Amphora33.obj,Amphora
+148,Amphora34.obj,Amphora
+149,Amphora35.obj,Amphora
+150,Amphora36.obj,Amphora
+151,Amphora37.obj,Amphora
+152,Amphora38.obj,Amphora
+153,Amphora39.obj,Amphora
+154,Amphora4.obj,Amphora
+155,Amphora40.obj,Amphora
+156,Amphora41.obj,Amphora
+157,Amphora42.obj,Amphora
+158,Amphora43.obj,Amphora
+159,Amphora44.obj,Amphora
+160,Amphora45.obj,Amphora
+161,Amphora46.obj,Amphora
+162,Amphora47.obj,Amphora
+163,Amphora48.obj,Amphora
+164,Amphora49.obj,Amphora
+165,Amphora5.obj,Amphora
+166,Amphora50.obj,Amphora
+167,Amphora6.obj,Amphora
+168,Amphora7.obj,Amphora
+169,Amphora8.obj,Amphora
+170,Amphora9.obj,Amphora
+171,amphora_25k.obj,Amphora
+172,an old vase.obj,Other
+173,Ancient Rome_Equip_Cooking pot.obj,Other
+174,Archive3D_Amfora-antic-i.obj,Amphora
+175,Archive3D_Bottle.obj,Modern-Bottle
+176,Archive3D_Budvase_green.obj,Modern-Vase
+177,Archive3D_Mug N160707.obj,Modern-Vase
+178,Archive3D_Paso_dos-vase.obj,Abstract
+179,Archive3D_Vase 2 N220708.obj,Other
+180,Archive3D_Vase N121107.obj,Modern-Vase
+181,Archive3D_Vase N160707.obj,Modern-Vase
+182,Archive3D_Vase N190208.obj,Modern-Vase
+183,Archive3D_Vase N200707.obj,Modern-Vase
+184,Archive3D_Vase N290108.obj,Modern-Vase
+185,Archive3D_Vase N290508.obj,Modern-Glass
+186,Archive3D_Vase-3W.obj,Modern-Vase
+187,Archive3D_Vase-big.obj,Modern-Vase
+188,Archive3D_Vase.obj,Modern-Vase
+189,Archive3D_Vase2 N160608.obj,Modern-Vase
+190,Archive3D_vase_anticue2.obj,Modern-Vase
+191,Archive3D_vase_persianis.obj,Other
+192,Archive3D_vaso.obj,Abstract
+193,Archive3D_Vaza N100608.obj,Abstract
+194,Archive3D_Vaza2 N100608.obj,Modern-Vase
+195,Ark_HM_107_HI.obj,Native American - Bottle
+196,Ark_HM_10_Hi.obj,Native American - Effigy
+197,Ark_HM_1264_HI.obj,Native American - Bottle
+198,Ark_HM_1265_HI.obj,Native American - Bottle
+199,Ark_HM_1281_HI.obj,Native American - Bottle
+200,Ark_HM_1293_Hi.obj,Native American - Bottle
+201,Ark_HM_1300_HI.obj,Native American - Bowl
+202,Ark_HM_130_HI.obj,Native American - Bottle
+203,Ark_HM_182_HI.obj,Native American - Bottle
+204,Ark_HM_202_HI.obj,Native American - Effigy
+205,Ark_HM_226_HI.obj,Native American - Bottle
+206,Ark_HM_309_HI.obj,Native American - Bottle
+207,Ark_HM_33_HI.obj,Native American - Jar
+208,Ark_HM_360_HI.obj,Native American - Bottle
+209,Ark_HM_396_HI.obj,Native American - Bottle
+210,Ark_HM_401_hi.obj,Native American - Bottle
+211,Ark_HM_402_HI.obj,Native American - Bottle
+212,Ark_HM_432_HI.obj,Native American - Bottle
+213,Ark_HM_442_HI.obj,Native American - Bottle
+214,Ark_HM_444_HI.obj,Native American - Jar
+215,Ark_HM_453_HI.obj,Native American - Bottle
+216,Ark_HM_474_HI.obj,Native American - Bottle
+217,Ark_HM_478_HI.obj,Native American - Bottle
+218,Ark_HM_495_HI.obj,Native American - Bottle
+219,Ark_HM_518_HI.obj,Native American - Jar
+220,Ark_HM_520_HI.obj,Other
+221,Ark_HM_55_Hi.obj,Native American - Jar
+222,Ark_HM_576_HI.obj,Native American - Bottle
+223,Ark_HM_581_HI.obj,Native American - Bottle
+224,Ark_HM_586_HI.obj,Native American - Effigy
+225,Ark_HM_591_HI.obj,Native American - Bottle
+226,Ark_HM_599_HI.obj,Native American - Bottle
+227,Ark_HM_614_HI.obj,Native American - Bottle
+228,Ark_HM_632_HI.obj,Native American - Bottle
+229,Ark_HM_661_HI.obj,Native American - Effigy
+230,Ark_HM_686_HI.obj,Native American - Bottle
+231,Ark_HM_692_HI.obj,Native American - Bottle
+232,Ark_HM_722_HI.obj,Native American - Bottle
+233,Ark_HM_727_Hi.obj,Native American - Bottle
+234,Ark_HM_728_HI.obj,Native American - Effigy
+235,Ark_HM_730_Hi.obj,Native American - Bottle
+236,Ark_HM_733_HI.obj,Native American - Bottle
+237,Ark_HM_745_HI.obj,Native American - Bottle
+238,Ark_HM_755_HI.obj,Native American - Jar
+239,Ark_HM_775_HI.obj,Native American - Bowl
+240,Ark_HM_781_HI.obj,Native American - Bottle
+241,Ark_HM_793_HI.obj,Native American - Bottle
+242,Ark_HM_799_HI.obj,Native American - Bottle
+243,BATUR P 55.obj,Other
+244,BATUR V 120.obj,Abstract
+245,benjarong 01.obj,Other
+246,benjarong 02.obj,Other
+247,black vase.obj,Modern-Vase
+248,BlenderRepository_12-oz-glass.obj,Modern-Glass
+249,BlenderRepository_cocktail-glass.obj,Modern-Glass
+250,BlenderRepository_coffee-mug.obj,Modern-Mug
+251,BlenderRepository_double-shot-glass.obj,Modern-Glass
+252,BlenderRepository_glass-mug.obj,Modern-Mug
+253,BlenderRepository_highball-glass.obj,Modern-Glass
+254,BlenderRepository_red-wine-bottle-01.obj,Modern-Bottle
+255,BlenderRepository_red-wine-bottle-02.obj,Modern-Bottle
+256,BlenderRepository_shot-glass.obj,Modern-Glass
+257,bluevase.obj,Modern-Vase
+258,bowl01.obj,Modern-Glass
+259,Cauldron Silver - SLF.obj,Abstract
+260,ceramica_utilitaria_missioneira_a.obj,Other
+261,CeramicTechnologies_dmbkweb.obj,Other
+262,CeramicTechnologies_dmbkweb2.obj,Other
+263,CeramicTechnologies_gr_radweb.obj,Other
+264,CeramicTechnologies_gr_zstrwweb.obj,Other
+265,CeramicTechnologies_kwlweb.obj,Bowl
+266,CeramicTechnologies_lundmrgall.obj,Other
+267,CeramicTechnologies_nkldweb.obj,Other
+268,CeramicTechnologies_nndrfweb.obj,Other
+269,CeramicTechnologies_wlgstweb.obj,Picher Shaped
+270,coo 3.obj,Modern-Vase
+271,Coventry Iron Planter.obj,Other
+272,Decoration vase.obj,Other
+273,diskopotiro.obj,Other
+274,Egyptain pot.obj,Pithos
+275,Flower Vase.obj,Abstract
+276,gardenvase_a.obj,Modern-Vase
+277,gardenvase_b.obj,Picher Shaped
+278,gardenvase_c.obj,Modern-Vase
+279,Glassn1.obj,Modern-Mug
+280,Glassn10.obj,Other
+281,Glassn11.obj,Modern-Vase
+282,Glassn12.obj,Modern-Bottle
+283,Glassn13.obj,Modern-Bottle
+284,Glassn2.obj,Modern-Glass
+285,Glassn3.obj,Amphora
+286,Glassn4.obj,Modern-Vase
+287,Glassn6.obj,Modern-Glass
+288,Glassn7.obj,Modern-Glass
+289,Glassn8.obj,Modern-Glass
+290,Glassn9.obj,Modern-Glass
+291,hg.obj,Other
+292,jar.obj,Modern-Vase
+293,jarre1.obj,Modern-Vase
+294,Kalathos1.obj,Kalathos
+295,Kalathos10.obj,Kalathos
+296,Kalathos11.obj,Kalathos
+297,Kalathos12.obj,Kalathos
+298,Kalathos13.obj,Kalathos
+299,Kalathos14.obj,Kalathos
+300,Kalathos15.obj,Kalathos
+301,Kalathos16.obj,Kalathos
+302,Kalathos17.obj,Kalathos
+303,Kalathos18.obj,Kalathos
+304,Kalathos19.obj,Kalathos
+305,Kalathos2.obj,Kalathos
+306,Kalathos20.obj,Kalathos
+307,Kalathos21.obj,Kalathos
+308,Kalathos22.obj,Kalathos
+309,Kalathos23.obj,Kalathos
+310,Kalathos24.obj,Kalathos
+311,Kalathos25.obj,Kalathos
+312,Kalathos26.obj,Kalathos
+313,Kalathos27.obj,Kalathos
+314,Kalathos28.obj,Kalathos
+315,Kalathos29.obj,Kalathos
+316,Kalathos3.obj,Kalathos
+317,Kalathos30.obj,Kalathos
+318,Kalathos31.obj,Kalathos
+319,Kalathos32.obj,Kalathos
+320,Kalathos33.obj,Kalathos
+321,Kalathos34.obj,Kalathos
+322,Kalathos35.obj,Kalathos
+323,Kalathos36.obj,Kalathos
+324,Kalathos37.obj,Kalathos
+325,Kalathos38.obj,Kalathos
+326,Kalathos39.obj,Kalathos
+327,Kalathos4.obj,Kalathos
+328,Kalathos40.obj,Kalathos
+329,Kalathos41.obj,Kalathos
+330,Kalathos42.obj,Kalathos
+331,Kalathos43.obj,Kalathos
+332,Kalathos44.obj,Kalathos
+333,Kalathos45.obj,Kalathos
+334,Kalathos46.obj,Kalathos
+335,Kalathos47.obj,Kalathos
+336,Kalathos48.obj,Kalathos
+337,Kalathos49.obj,Kalathos
+338,Kalathos5.obj,Kalathos
+339,Kalathos50.obj,Kalathos
+340,Kalathos6.obj,Kalathos
+341,Kalathos7.obj,Kalathos
+342,Kalathos8.obj,Kalathos
+343,Kalathos9.obj,Kalathos
+344,levitas.obj,Lebes
+345,likithos.obj,Lekythos
+346,London 1897-7-27-2.obj,Other
+347,London 1899-2-19-1.obj,Krater
+348,London 1899-7-21-4.obj,Hydria
+349,London 1899-7-21-5.obj,Dinos
+350,London 1901-5-14-1.obj,Kylix
+351,London 1903-2-17-1.obj,Other
+352,London 1912-5-22-1.obj,Oinochoe
+353,London 1914-10-30-1.obj,Other
+354,London 1917-12-10-1.obj,Krater
+355,London 1917-7-25-2.obj,Other
+356,London 1920-12-21-1.obj,Pyxis
+357,London 1923-1-18-1.obj,Krater
+358,London 1923-10-16-10.obj,Krater
+359,London 1928-2-13-1.obj,Lekythos
+360,London 1928-7-19-3.obj,Other
+361,London 1947-7-14-18.obj,Krater
+362,London 1961-7-10-1.obj,Krater
+363,London 1964-4-15-1.obj,Other
+364,London 1971-11-1-1.obj,Dinos
+365,London 1978-6-15-1.obj,Krater
+366,London 1980-10-29-1.obj,Other
+367,London A 342.obj,Oinochoe
+368,London B 130.obj,Amphora
+369,London B 134.obj,Amphora
+370,London B 144.obj,Amphora
+371,London B 148.obj,Amphora
+372,London B 150.obj,Amphora
+373,London B 161.obj,Amphora
+374,London B 163.obj,Amphora
+375,London B 174.obj,Amphora
+376,London B 193.obj,Amphora
+377,London B 210.obj,Amphora
+378,London B 215.obj,Amphora
+379,London B 226.obj,Amphora
+380,London B 280.obj,Amphora
+381,London B 298.obj,Lebes
+382,London B 300.obj,Hydria
+383,London B 304.obj,Hydria
+384,London B 323.obj,Hydria
+385,London B 327.obj,Hydria
+386,London B 329.obj,Hydria
+387,London B 364.obj,Hydria
+388,London B 376.obj,Mastos
+389,London B 380.obj,Kylix
+390,London B 39.obj,Oinochoe
+391,London B 421.obj,Kylix
+392,London B 424.obj,Kylix
+393,London B 432.obj,Kylix
+394,London B 471.obj,Oinochoe
+395,London B 475.obj,Oinochoe
+396,London B 492.obj,Oinochoe
+397,London B 502.obj,Oinochoe
+398,London B 507.obj,Oinochoe
+399,London B 52.obj,Oinochoe
+400,London B 605.obj,Amphora
+401,London B 607.obj,Amphora
+402,London B 610.obj,Amphora
+403,London B 658.obj,Lekythos
+404,London B 668.obj,Alabastron
+405,London B 674.obj,Alabastron
+406,London B 675.obj,Bowl
+407,London B 693.obj,Kyathos
+408,London B 76.obj,Hydria
+409,London D 13.obj,Oinochoe
+410,London D 2.obj,Kylix
+411,London D 20.obj,Lekythos
+412,London D 4.obj,Kylix
+413,London D 48.obj,Lekythos
+414,London D 51.obj,Lekythos
+415,London D 58.obj,Lekythos
+416,London D 6.obj,Kylix
+417,London D 60.obj,Lekythos
+418,London D 61.obj,Lekythos
+419,London D 7.obj,Bowl
+420,London D 71.obj,Lekythos
+421,London E 104.obj,Kylix
+422,London E 129.obj,Kylix
+423,London E 134-2.obj,Kylix
+424,London E 140.obj,Skyphos
+425,London E 157.obj,Kantharos
+426,London E 159.obj,Hydria
+427,London E 162.obj,Hydria
+428,London E 163.obj,Hydria
+429,London E 169.obj,Hydria
+430,London E 171.obj,Hydria
+431,London E 178.obj,Hydria
+432,London E 180.obj,Hydria
+433,London E 190.obj,Hydria
+434,London E 219.obj,Hydria
+435,London E 222.obj,Hydria
+436,London E 224.obj,Hydria
+437,London E 227.obj,Oinochoe
+438,London E 228.obj,Oinochoe
+439,London E 23.obj,Kylix
+440,London E 233.obj,Hydria
+441,London E 241.obj,Hydria
+442,London E 255.obj,Amphora
+443,London E 258.obj,Amphora
+444,London E 266.obj,Amphora
+445,London E 270.obj,Amphora
+446,London E 271.obj,Amphora
+447,London E 284.obj,Amphora
+448,London E 3.obj,Kylix
+449,London E 313.obj,Other
+450,London E 336.obj,Other
+451,London E 34.obj,Kylix
+452,London E 363.obj,Pelike
+453,London E 370.obj,Pelike
+454,London E 372.obj,Pelike
+455,London E 38.obj,Kylix
+456,London E 382.obj,Pelike
+457,London E 41.obj,Kylix
+458,London E 410.obj,Pelike
+459,London E 424.obj,Pelike
+460,London E 432.obj,Pelike
+461,London E 437.obj,Pelike
+462,London E 439.obj,Pelike
+463,London E 44.obj,Kylix
+464,London E 440.obj,Stamnos
+465,London E 466.obj,Krater
+466,London E 65.obj,Kylix
+467,London E 66.obj,Kylix
+468,London E 695.obj,Lekythos
+469,London E 697.obj,Lekythos
+470,London E 698.obj,Lekythos
+471,London E 768.obj,Psykter
+472,London E 772.obj,Pyxis
+473,London E 773.obj,Pyxis
+474,London E 774.obj,Pyxis
+475,London E 775.obj,Pyxis
+476,London E 808.obj,Other
+477,London F 157.obj,Krater
+478,London F 159.obj,Hydria
+479,London F 174.obj,Krater
+480,London F 179.obj,Amphora
+481,London F 189.obj,Krater
+482,London F 194.obj,Amphora
+483,London F 197.obj,Amphora
+484,London F 271.obj,Krater
+485,London F 272.obj,Krater
+486,London F 284.obj,Krater
+487,London F 303.obj,Other
+488,London F 473.obj,Other
+489,London F 582.obj,Modern-Vase
+490,London F 65.obj,Other
+491,London F 68.obj,Other
+492,London F 90_1.obj,Hydria
+493,London F 90_2.obj,Other
+494,London F 90_3.obj,Skyphos
+495,London F 90_5.obj,Hydria
+496,London K 38.obj,Kylix
+497,LR_41638k_HI.obj,Native American - Bottle
+498,m500.obj,Modern-Glass
+499,m501.obj,Modern-Glass
+500,m502.obj,Modern-Glass
+501,m504.obj,Modern-Mug
+502,m505.obj,Modern-Mug
+503,m507.obj,Modern-Mug
+504,m508.obj,Modern-Mug
+505,m509.obj,Modern-Mug
+506,m527.obj,Modern-Vase
+507,m528.obj,Alabastron
+508,m530.obj,Modern-Bottle
+509,m531.obj,Modern-Vase
+510,m532.obj,Modern-Vase
+511,m533.obj,Other
+512,m534.obj,Modern-Vase
+513,m535.obj,Abstract
+514,m536.obj,Modern-Vase
+515,m537.obj,Modern-Bottle
+516,m539.obj,Modern-Vase
+517,m540.obj,Other
+518,m541.obj,Modern-Vase
+519,m542.obj,Krater
+520,m543.obj,Modern-Vase
+521,m544.obj,Modern-Vase
+522,m545.obj,Bowl
+523,m546.obj,Modern-Vase
+524,m547.obj,Kalathos
+525,mavro.obj,Amphora
+526,melanomorfos amforeas.obj,Amphora
+527,moirodoxio.obj,Other
+528,mouseioc.obj,Amphora
+529,NickNacks_b.obj,Picher Shaped
+530,NickNacks_d.obj,Modern-Vase
+531,NickNacks_e.obj,Modern-Vase
+532,NickNacks_f.obj,Modern-Vase
+533,Oinoxoh.obj,Oinochoe
+534,old_jar.obj,Oinochoe
+535,olla.obj,Other
+536,Peleki_hole.obj,Pelike
+537,perfumevaze.obj,Other
+538,Pot.obj,Other
+539,pot2.obj,Modern-Vase
+540,pots_1.obj,Pithos
+541,pots_2.obj,Modern-Bottle
+542,pots_3.obj,Pithos
+543,pots_4.obj,Other
+544,potteint.obj,Amphora
+545,Pot_Chinois[1].obj,Modern-Vase
+546,Pot_Chinois[2].obj,Modern-Vase
+547,Pot_de_terre.obj,Oinochoe
+548,Psykter0.obj,Psykter
+549,Psykter1.obj,Psykter
+550,Psykter10.obj,Psykter
+551,Psykter11.obj,Psykter
+552,Psykter12.obj,Psykter
+553,Psykter13.obj,Psykter
+554,Psykter14.obj,Psykter
+555,Psykter15.obj,Psykter
+556,Psykter17.obj,Psykter
+557,Psykter18.obj,Psykter
+558,Psykter19.obj,Psykter
+559,Psykter2.obj,Psykter
+560,Psykter20.obj,Psykter
+561,Psykter21.obj,Psykter
+562,Psykter22.obj,Psykter
+563,Psykter23.obj,Psykter
+564,Psykter24.obj,Psykter
+565,Psykter25.obj,Psykter
+566,Psykter26.obj,Psykter
+567,Psykter27.obj,Psykter
+568,Psykter28.obj,Psykter
+569,Psykter29.obj,Psykter
+570,Psykter3.obj,Psykter
+571,Psykter30.obj,Psykter
+572,Psykter31.obj,Psykter
+573,Psykter32.obj,Psykter
+574,Psykter33.obj,Psykter
+575,Psykter34.obj,Psykter
+576,Psykter35.obj,Psykter
+577,Psykter36.obj,Psykter
+578,Psykter37.obj,Psykter
+579,Psykter38.obj,Psykter
+580,Psykter39.obj,Psykter
+581,Psykter4.obj,Psykter
+582,Psykter40.obj,Psykter
+583,Psykter41.obj,Psykter
+584,Psykter42.obj,Psykter
+585,Psykter43.obj,Psykter
+586,Psykter44.obj,Psykter
+587,Psykter45.obj,Psykter
+588,Psykter46.obj,Psykter
+589,Psykter47.obj,Psykter
+590,Psykter48.obj,Psykter
+591,Psykter49.obj,Psykter
+592,Psykter5.obj,Psykter
+593,Psykter6.obj,Psykter
+594,Psykter7.obj,Psykter
+595,Psykter8.obj,Psykter
+596,Remade_Vessel_2.obj,Oinochoe
+597,RS-15.obj,Other
+598,RS-21[1].obj,Other
+599,San45s.obj,Modern-Vase
+600,Sans.obj,Modern-Vase
+601,Saucepan01.obj,Other
+602,simple_vase.obj,Modern-Vase
+603,Sin.obj,Other
+604,Sin2.obj,Modern-Vase
+605,Sketch_6.obj,Other
+606,ST.obj,Kalathos
+607,Tefrodoxh.obj,Hydria
+608,Thassos_Vase_1.obj,Picher Shaped
+609,Thassos_Vaze_2.obj,Picher Shaped
+610,Thassos_Vaze_3.obj,Picher Shaped
+611,Thassos_Vaze_4.obj,Picher Shaped
+612,Thin Vase.obj,Modern-Vase
+613,TSI_ENST_FR_Cp_botijo_mix_mr.obj,Other
+614,TSI_ENST_FR_Cp_vase_1205_lr.obj,Lekythos
+615,TSI_ENST_FR_Cp_vase_1283_mr.obj,Modern-Vase
+616,TSI_ENST_FR_Cp_vase_1286_mr.obj,Kantharos
+617,TSI_ENST_FR_Cp_vase_1288_lr.obj,Oinochoe
+618,TSI_ENST_FR_Cp_vase_1289_mr.obj,Other
+619,TSI_ENST_FR_Cp_vase_1299_mr.obj,Lekythos
+620,TSI_ENST_FR_Cp_vase_1300_mr.obj,Lekythos
+621,TSI_ENST_FR_Cp_vase_1301_lr.obj,Oinochoe
+622,TSI_ENST_FR_Cp_vase_1302b_lr.obj,Lekythos
+623,TSI_ENST_FR_Cp_vase_1302_lr.obj,Other
+624,TSI_ENST_FR_Cp_vase_1303_mr.obj,Modern-Vase
+625,TSI_ENST_FR_Cp_vase_1305b_mr.obj,Lekythos
+626,TSI_ENST_FR_Cp_vase_1305_lr.obj,Lekythos
+627,TSI_ENST_FR_Cp_vase_1_vam_mr.obj,Other
+628,tutu_1.obj,Other
+629,tutu_10.obj,Abstract
+630,tutu_11.obj,Abstract
+631,tutu_12.obj,Modern-Vase
+632,tutu_13.obj,Abstract
+633,tutu_14.obj,Modern-Vase
+634,tutu_15.obj,Abstract
+635,tutu_16.obj,Abstract
+636,tutu_17.obj,Abstract
+637,tutu_18.obj,Abstract
+638,tutu_19.obj,Abstract
+639,tutu_20.obj,Modern-Vase
+640,tutu_21.obj,Abstract
+641,tutu_22.obj,Abstract
+642,tutu_23.obj,Abstract
+643,tutu_24.obj,Abstract
+644,tutu_25.obj,Abstract
+645,tutu_26.obj,Abstract
+646,tutu_27.obj,Abstract
+647,tutu_28.obj,Abstract
+648,tutu_29.obj,Abstract
+649,tutu_3.obj,Modern-Vase
+650,tutu_30.obj,Abstract
+651,tutu_31.obj,Abstract
+652,tutu_32.obj,Abstract
+653,tutu_33.obj,Abstract
+654,tutu_34.obj,Abstract
+655,tutu_35.obj,Abstract
+656,tutu_36.obj,Abstract
+657,tutu_37.obj,Modern-Vase
+658,tutu_38.obj,Abstract
+659,tutu_39.obj,Abstract
+660,tutu_40.obj,Abstract
+661,tutu_41.obj,Abstract
+662,tutu_42.obj,Abstract
+663,tutu_43.obj,Modern-Vase
+664,tutu_44.obj,Abstract
+665,tutu_45.obj,Modern-Vase
+666,tutu_46.obj,Abstract
+667,tutu_47.obj,Modern-Vase
+668,tutu_48.obj,Abstract
+669,tutu_49.obj,Abstract
+670,tutu_5.obj,Picher Shaped
+671,tutu_50.obj,Abstract
+672,tutu_53.obj,Picher Shaped
+673,tutu_55.obj,Picher Shaped
+674,tutu_7.obj,Picher Shaped
+675,tutu_9.obj,Modern-Vase
+676,Untitled(2).obj,Modern-Vase
+677,Untitled(3).obj,Abstract
+678,Untitled.obj,Other
+679,urn.obj,Amphora
+680,v1.obj,Picher Shaped
+681,v2.obj,Modern-Vase
+682,vaas3.obj,Modern-Vase
+683,Various1.obj,Other
+684,Various2.obj,Modern-Vase
+685,Various3.obj,Modern-Vase
+686,Various4.obj,Modern-Vase
+687,Various5.obj,Modern-Vase
+688,Various8.obj,Modern-Vase
+689,Various9.obj,Modern-Vase
+690,vas5e6.obj,Modern-Vase
+691,Vase -recolour (slate blue).obj,Modern-Vase
+692,Vase 01_1.obj,Modern-Vase
+693,Vase 01_2.obj,Modern-Vase
+694,Vase 01_3.obj,Modern-Vase
+695,Vase 02_1.obj,Modern-Vase
+696,Vase 02_2.obj,Other
+697,Vase 02_3.obj,Modern-Vase
+698,Vase 02_4.obj,Modern-Vase
+699,Vase 02_5.obj,Modern-Vase
+700,vase and water.obj,Modern-Vase
+701,vase china 03.obj,Modern-Vase
+702,vase china 07.obj,Modern-Vase
+703,vase development.obj,Modern-Vase
+704,vase lunares verdes 1.obj,Modern-Vase
+705,vase lunares verdes 2.obj,Modern-Vase
+706,vase lunares verdes 3.obj,Modern-Vase
+707,Vase(2)_1.obj,Modern-Vase
+708,Vase(2)_2.obj,Modern-Vase
+709,Vase.obj,Modern-Vase
+710,vase1.obj,Modern-Glass
+711,vase10.obj,Picher Shaped
+712,vase11.obj,Abstract
+713,vase12.obj,Abstract
+714,vase13.obj,Modern-Vase
+715,vase14.obj,Other
+716,vase15.obj,Modern-Vase
+717,vase16_1.obj,Modern-Vase
+718,vase16_2.obj,Modern-Vase
+719,vase16_3.obj,Modern-Vase
+720,vase17.obj,Modern-Vase
+721,vase19.obj,Modern-Vase
+722,vase1s.obj,Modern-Glass
+723,vase2 render.obj,Other
+724,Vase2.obj,Other
+725,vase20.obj,Abstract
+726,vase21.obj,Modern-Vase
+727,vase22.obj,Modern-Vase
+728,vase23.obj,Modern-Vase
+729,vase25.obj,Modern-Vase
+730,vase26.obj,Krater
+731,vase27.obj,Amphora
+732,vase28_1.obj,Modern-Vase
+733,vase28_2.obj,Modern-Vase
+734,vase28_3.obj,Modern-Vase
+735,Vase29.obj,Other
+736,vase3.obj,Picher Shaped
+737,Vase30.obj,Modern-Vase
+738,vase4.obj,Modern-Vase
+739,vase5.obj,Modern-Vase
+740,Vase6.obj,Modern-Vase
+741,vase7.obj,Other
+742,Vase8.obj,Modern-Glass
+743,vases3.obj,Modern-Vase
+744,Vase_Earthenware_SLF.obj,Picher Shaped
+745,Vase_Google_sketch_1.obj,Amphora
+746,Vase_Google_sketch_2.obj,Amphora
+747,vase_round.obj,Other
+748,Vase_Short.obj,Modern-Vase
+749,Vase_Short2.obj,Modern-Vase
+750,Vase_Thin.obj,Modern-Vase
+751,Vaso decorao 02_a.obj,Modern-Vase
+752,Vaso decorao 02_b.obj,Modern-Vase
+753,verre.obj,Modern-Glass
+754,wooden vase 2.obj,Modern-Vase
+755,Y10391_Ketchup.obj,Modern-Bottle
+756,Y1374_JAR93.obj,Other
+757,Y1578_URN.obj,Abstract
+758,Y1621_WINEGOBL.obj,Modern-Glass
+759,Y2118_JAR93.obj,Other
+760,Y22_mug.obj,Modern-Mug
+761,Y2440_GOBLET.obj,Modern-Glass
+762,Y2442_GRAIL.obj,Modern-Glass
+763,Y2527_POTTERY0.obj,Abstract
+764,Y2528_POTTERY1.obj,Modern-Glass
+765,Y2531_POTTERY4.obj,Kalathos
+766,Y2532_POTTERY5.obj,Bowl
+767,Y2533_POTTERY6.obj,Bowl
+768,Y2534_POTTERY7.obj,Abstract
+769,Y2535_POTTERY8.obj,Abstract
+770,Y297_BOTTLE2_.obj,Modern-Bottle
+771,Y302_FLASK_GR.obj,Other
+772,Y3067_Glass.obj,Modern-Glass
+773,Y316_FINIALBL.obj,Other
+774,Y3536_budvase.obj,Modern-Vase
+775,Y3549_chaglass.obj,Modern-Glass
+776,Y4051_winegobl.obj,Modern-Glass
+777,Y4196_vase2.obj,Modern-Vase
+778,Y4249_urn2.obj,Abstract
+779,Y5028_BUDVASE.obj,Modern-Vase
+780,Y5100_CHAGLASS.obj,Modern-Glass
+781,Y5160_clay_vase.obj,Pithos
+782,Y5746_KUROS.obj,Other
+783,Y6094_PLASTBTL.obj,Modern-Bottle
+784,Y6110_POTTRY2.obj,Modern-Vase
+785,Y640_KUROS.obj,Pithoeidi
+786,Y6515_TEACUP.obj,Modern-Mug
+787,Y6745_WINEGOBL.obj,Modern-Glass
+788,Y6990_bin.obj,Kalathos
+789,Y7054_alch-bottle.obj,Modern-Vase
+790,Y7062_candlestick.obj,Other
+791,Y7063_caldren.obj,Other
+792,Y7069_jar-2.obj,Modern-Vase
+793,Y7070_jar-3.obj,Abstract
+794,Y7071_jar-4.obj,Other
+795,Y7072_jar-5.obj,Modern-Vase
+796,Y7073_jar-6.obj,Abstract
+797,Y7091_Urn-1.obj,Amphora
+798,Y7187_POTTRY1.obj,Abstract
+799,Y7193_pottry1.obj,Abstract
+800,Y7194_POTTRY2.obj,Modern-Vase
+801,Y7274_a3dhopi.obj,Abstract
+802,Y7323_a3dpott.obj,Modern-Vase
+803,Y7324_pottry1.obj,Abstract
+804,Y7848_beaker.obj,Modern-Glass
+805,Y7849_bottle2.obj,Modern-Bottle
+806,Y7974_glass1.obj,Modern-Glass
+807,Y7975_glass2.obj,Modern-Glass
+808,Y7976_glass3.obj,Modern-Glass
+809,Y7977_glass4.obj,Modern-Glass
+810,Y7978_glass6.obj,Modern-Glass
+811,Y7979_goblet.obj,Modern-Glass
+812,Y8071_Bowl.obj,Modern-Glass
+813,Y8079_Glass5.obj,Modern-Glass
+814,Y8080_Goblet2.obj,Modern-Glass
+815,Y8089_Wineglas.obj,Modern-Glass
+816,Y8182_Flask2.obj,Modern-Vase
+817,Y8965_bottle1.obj,Modern-Bottle
+818,Y8966_bottle2.obj,Modern-Bottle
+819,Y8968_champagne.obj,Modern-Glass
+820,Y8971_flask.obj,Other
+821,Y8979_glass1.obj,Modern-Glass
+822,Y8980_glass2.obj,Modern-Glass
+823,Y8981_glass3.obj,Modern-Glass
+824,Y8982_glass4.obj,Modern-Glass
+825,Y8983_glass6.obj,Modern-Glass
+826,Y8984_goblet.obj,Modern-Glass
+827,Y8985_goblet_g.obj,Modern-Glass
+828,Y9099_Vase.obj,Oinochoe
+829,Y9226_martini.obj,Modern-Glass
+830,Y9227_mug.obj,Modern-Mug
+831,Ydria_hole.obj,Hydria
+832,znbh_1.obj,Modern-Vase
+833,znbh_2.obj,Other
+834,znbh_3.obj,Modern-Vase
+835,znbh_4.obj,Modern-Vase
+836,znbh_5.obj,Modern-Vase
+837,znbh_6.obj,Modern-Vase
+838,znbh_7.obj,Modern-Vase
+839,znbh_8.obj,Modern-Vase
+840,Alabastron_Louvre_CA1920.obj,Alabastron
+841,amphorainprogress.obj,Amphora
+842,Athena_Herakles.obj,Amphora
+843,Corinthian_jug_620_BC_Staatliche_Antikensammlungen.obj,Oinochoe
+844,Ionian_lydion_MAR_Palermo_NI1779.obj,Lydion
+845,Judgement_Paris_Getty_Villa_83AE10_full.obj,Pelike
+846,Louvre_amphorisque_animaux_sirenes.obj,Amphora
+847,olpe.obj,Oinochoe
+848,Olpe_sphinx_Louvre_Cp10475.obj,Oinochoe
+849,Protocorinthian_aryballos_Louvre_CA2919.obj,Aryballos
+850,Pyxis_Peleus_Thetis_Louvre_L55.obj,Pyxis
+851,world.obj,Krater
+852,Strainer_Vase_Herakles_Louvre.obj,Other
+853,kantharos.obj,Kantharos
+854,pithos.obj,Pithos
+855,Nikosthenic_amphora.obj,Amphora
+856,Hermogenes_skyphos_Louvre.obj,Skyphos
+857,likithosqp.obj,Lekythos
+858,qpvase.obj,Abstract
+859,qpvase2.obj,Abstract
+860,qpvase3.obj,Pithos
+861,qpvase4.obj,Other
+862,qpvase5.obj,Lagynos
+863,visiting_grave.obj,Lekythos
+864,tampa.obj,Alabastron
+865,ch6793s.obj,Amphora
+866,ch653bms.obj,Oinochoe
+867,ch6834s.obj,Other
+868,ch6818as.obj,Amphora
+869,ch658s.obj,Amphora
+870,amphora501Ncon.obj,Oinochoe
+871,greekgeometric.obj,Other
+872,qp1.obj,Modern-Vase
+873,qp2.obj,Modern-Vase
+874,qp3.obj,Modern-Vase
+875,qp4.obj,Modern-Vase
+876,qp5.obj,Modern-Vase
+877,qp6.obj,Modern-Vase
+878,qp7.obj,Modern-Vase
+879,qp8.obj,Modern-Vase
+880,qp9.obj,Modern-Vase
+881,qp10.obj,Modern-Vase
+882,qp11.obj,Modern-Vase
+883,qp12.obj,Modern-Vase
+884,qp13.obj,Modern-Vase
+885,qp14.obj,Modern-Vase
+886,qp15.obj,Modern-Vase
+887,qp16.obj,Modern-Vase
+888,qp17.obj,Modern-Vase
+889,qp18.obj,Modern-Vase
+890,qp19.obj,Modern-Vase
+891,qp20.obj,Modern-Vase
+892,qp21.obj,Abstract
+893,qp22.obj,Abstract
+894,qp23.obj,Abstract
+895,qp24.obj,Abstract
+896,qp25.obj,Abstract
+897,qp26.obj,Abstract
+898,qp27.obj,Abstract
+899,qp28.obj,Abstract
+900,qp29.obj,Abstract
+901,qp30.obj,Abstract
+902,qp31.obj,Abstract
+903,qp32.obj,Abstract
+904,qp33.obj,Abstract
+905,qp34.obj,Abstract
+906,qp35.obj,Abstract
+907,qp36.obj,Abstract
+908,qp37.obj,Abstract
+909,qp38.obj,Abstract
+910,qp39.obj,Abstract
+911,qp40.obj,Abstract
+912,qp41.obj,Abstract
+913,qp42.obj,Abstract
+914,qp43.obj,Abstract
+915,qp44.obj,Abstract
+916,qp45.obj,Abstract
+917,qp46.obj,Abstract
+918,qp47.obj,Abstract
+919,qp48.obj,Abstract
+920,qp49.obj,Abstract
+921,qp50.obj,Abstract
+922,qp51.obj,Abstract
+923,qp52.obj,Abstract
+924,qp53.obj,Abstract
+925,qp54.obj,Abstract
+926,qp55.obj,Abstract
+927,qp56.obj,Abstract
+928,qp57.obj,Abstract
+929,qp58.obj,Abstract
+930,qp59.obj,Abstract
+931,qp60.obj,Abstract
+932,qp61.obj,Abstract
+933,qp62.obj,Abstract
+934,qp63.obj,Abstract
+935,qp64.obj,Abstract
+936,qp65.obj,Abstract
+937,qp66.obj,Abstract
+938,qp67.obj,Abstract
+939,qp68.obj,Abstract
+940,qp69.obj,Abstract
+941,qp70.obj,Abstract
+942,qp71.obj,Abstract
+943,qp72.obj,Abstract
+944,qp73.obj,Abstract
+945,qp74.obj,Abstract
+946,qp75.obj,Abstract
+947,qp76.obj,Abstract
+948,qp77.obj,Abstract
+949,qp78.obj,Abstract
+950,qp79.obj,Abstract
+951,qp80.obj,Abstract
+952,qp81.obj,Abstract
+953,qp82.obj,Abstract
+954,qp83.obj,Abstract
+955,qp84.obj,Abstract
+956,qp85.obj,Abstract
+957,qp86.obj,Abstract
+958,qp87.obj,Abstract
+959,qp88.obj,Abstract
+960,qp89.obj,Abstract
+961,qp90.obj,Abstract
+962,qp91.obj,Other
+963,qp92.obj,Other
+964,qp93.obj,Other
+965,qp94.obj,Other
+966,qp95.obj,Other
+967,qp96.obj,Other
+968,qp97.obj,Other
+969,qp98.obj,Other
+970,qp99.obj,Other
+971,qp100.obj,Picher Shaped
+972,qp101.obj,Picher Shaped
+973,qp102.obj,Picher Shaped
+974,qp103.obj,Picher Shaped
+975,qp104.obj,Picher Shaped
+976,qp105.obj,Picher Shaped
+977,qp106.obj,Picher Shaped
+978,qp107.obj,Picher Shaped
+979,qp108.obj,Picher Shaped
+980,qp109.obj,Picher Shaped
+981,qp110.obj,Picher Shaped
+982,qp111.obj,Abstract
+983,qp112.obj,Abstract
+984,qp113.obj,Abstract
+985,qp114.obj,Abstract
+986,qp115.obj,Abstract
+987,qp116.obj,Abstract
+988,qp117.obj,Abstract
+989,qp118.obj,Abstract
+990,qp119.obj,Abstract
+991,qp120.obj,Abstract
+992,qp121.obj,Abstract
+993,qp122.obj,Abstract
+994,qp123.obj,Abstract
+995,qp124.obj,Abstract
+996,qp125.obj,Abstract
+997,qp126.obj,Abstract
+998,qp127.obj,Abstract
+999,qp128.obj,Abstract
+1000,qp129.obj,Abstract
+1001,qp130.obj,Abstract
+1002,qp131.obj,Abstract
+1003,qp132.obj,Abstract
+1004,qp133.obj,Abstract
+1005,qp134.obj,Abstract
+1006,qp135.obj,Abstract
+1007,qp136.obj,Abstract
+1008,qp137.obj,Abstract
+1009,qp138.obj,Abstract
+1010,qp139.obj,Abstract
+1011,qp140.obj,Abstract
+1012,Nestoris_Louvre_K534.obj,Nestoris

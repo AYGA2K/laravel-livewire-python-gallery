@@ -2,6 +2,7 @@
 
 use App\Livewire\Actions\Logout;
 use App\Livewire\Forms\LogoutForm;
+use App\Livewire\Obj;
 use Livewire\Volt\Component;
 
 new class extends Component
@@ -38,10 +39,15 @@ new class extends Component
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('upload')" :active="request()->routeis('upload')" wire:navigate>
                         {{ __('upload images') }}
-
                     </x-nav-link>
                 </div>
 
+                <!-- Add the link for the new Livewire component -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('obj')" :active="request()->routeis('obj')" wire:navigate>
+                        {{ __('Obj') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -76,5 +82,4 @@ new class extends Component
 
         </div>
     </div>
-
 </nav>

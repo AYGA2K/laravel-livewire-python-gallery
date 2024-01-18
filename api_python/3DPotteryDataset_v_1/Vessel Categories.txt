@@ -1,0 +1,50 @@
+Alabastron
+Amphora
+Amphoriskos
+Aryballos
+Askos
+Bowl
+Cup
+Dinos
+Epichysis
+Exaleiptron
+Skyphos
+Hydria
+Kalathos
+Kantharos
+Kernos
+Krater
+Kyathos
+Kylix
+Lagynos
+Lebes
+Lekane
+Lekythos
+Loutrophoros
+Lydion
+Mastos
+Mug
+Nestoris
+Oinochoe
+Pelike
+Pithos
+Plemochoe
+Psykter
+Pyxis
+Skyphos
+Other
+Modern-Bottle
+Modern-Vase
+Modern-Glass
+Modern-Bowl
+Modern-Cup
+Modern-Mug
+Modern-Urn
+Modern-Pot
+Pithoeidi
+Native American - Jar
+Native American - Effigy
+Native American - Bowl
+Native American - Bottle
+Picher Shaped
+Abstract

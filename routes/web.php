@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ProcessingImage;
 use App\Livewire\ImageCropper;
+use App\Livewire\Obj;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,7 @@ Route::view('upload', 'upload')
     ->middleware(['auth', 'verified'])
     ->name('upload');
 
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
@@ -36,5 +38,7 @@ Route::get('/crop/{imageId}', ImageCropper::class)
     ->middleware(['auth'])
     ->name('crop-image');
 
-
+Route::get('/obj', Obj::class)
+    ->middleware(['auth', 'verified'])
+    ->name('obj');
 require __DIR__ . '/auth.php';
