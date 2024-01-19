@@ -37,9 +37,6 @@ class UploadImage extends Component
     public function store()
     {
 
-        $this->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:20048', 'category' => 'required',
-        ]);
 
         foreach ($this->images as $key => $image) {
             if ($image->isValid()) {
@@ -58,14 +55,11 @@ class UploadImage extends Component
                 $imageModel->save();
 
 
-                // calling Agent's 47 fucking api
-                // this block
                 try {
                     Http::get("127.0.0.1:5000/preprocessing?imageName=" . $imageName);
-                    $this->errorMessage = "" ;
-                }
-                catch (ConnectionException $e) {
-                    $this->errorMessage = "Cant's connect to the server " . $e->getMessage() ;
+                    $this->errorMessage = "";
+                } catch (ConnectionException $e) {
+                    $this->errorMessage = "Cant's connect to the server " . $e->getMessage();
                 }
             } else {
                 $this->errorMessage = 'Error uploading one or more images.';

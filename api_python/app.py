@@ -5,11 +5,12 @@ import numpy as np
 from flask import Flask, request
 import ProcessObject
 from ProcessAllObjects import ProcessDirectory
+from itertools import islice
 
 app = Flask(__name__)
 
 JsonFileName = "all_results.json"
-sharedFolder = "./sharedFolder/"
+sharedFolder = "../public/storage/obj_files/"
 
 json_results = {}  # to store features of all the OBJ file in out models example dir
 
@@ -34,20 +35,22 @@ def euclidean_distance(features1, features2):
 
 @app.route("/", methods=["GET"])
 def hello_world():  # put application's code here
-    return 'Hello World!'
+    return "Hello World!"
 
 
 @app.route("/getSimilarObjs", methods=["GET"])
 def getSimilarObjs():
     objName = request.args.get("name")
+    print(objName)
 
     newObject = ProcessObject.MeshFeaturesCalculator.calculate_features(
-        sharedFolder + objName)  # objName like: "test.obj"
+        sharedFolder + objName
+    )  # objName like: "test.obj"
     newObjectData = [
-        np.array(newObject.get('inertia_matrix')),
-        np.array(newObject.get('moment_along_principal_axes')),
-        np.array(newObject.get('averages_along_axes')),
-        np.array(newObject.get('variances_along_axes')),
+        np.array(newObject.get("inertia_matrix")),
+        np.array(newObject.get("moment_along_principal_axes")),
+        np.array(newObject.get("averages_along_axes")),
+        np.array(newObject.get("variances_along_axes")),
     ]
 
     distances = {}
@@ -57,31 +60,31 @@ def getSimilarObjs():
         # Iterate through the second-level dictionary
         for inner_key, features_dict in inner_dict.items():
             d1 = euclidean_distance(
-                np.array(features_dict.get('inertia_matrix')),
-                newObjectData[0]
+                np.array(features_dict.get("inertia_matrix")), newObjectData[0]
             )
 
             d2 = euclidean_distance(
-                np.array(features_dict.get('moment_along_principal_axes')),
-                newObjectData[1]
+                np.array(features_dict.get("moment_along_principal_axes")),
+                newObjectData[1],
             )
 
             d3 = euclidean_distance(
-                np.array(features_dict.get('averages_along_axes')),
-                newObjectData[2]
+                np.array(features_dict.get("averages_along_axes")), newObjectData[2]
             )
 
             d4 = euclidean_distance(
-                np.array(features_dict.get('variances_along_axes')),
-                newObjectData[3]
+                np.array(features_dict.get("variances_along_axes")), newObjectData[3]
             )
             filename = inner_key
             filename = change_extension(filename, ".jpg")
 
-            distances["3DPotteryDataset_v_1/3D Models/" + outer_key + "/" + filename] = d1 + d2 + d3 + d4
+            distances["Thumbnails/" + outer_key + "/" + filename] = d1 + d2 + d3 + d4
 
     sorted_dict_by_values = dict(sorted(distances.items(), key=lambda item: item[1]))
-    return json.JSONEncoder().encode(list(sorted_dict_by_values.keys()))
+    # return json.JSONEncoder().encode(list(sorted_dict_by_values.keys()))
+    top_20_images = list(islice(sorted_dict_by_values.keys(), 30))
+
+    return json.JSONEncoder().encode(top_20_images)
 
 
 def change_extension(filename, new_extension):

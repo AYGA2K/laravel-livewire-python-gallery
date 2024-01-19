@@ -27,5 +27,26 @@
 
             </div>
         </div>
+
+        <div class=" py-4 flex justify-center items-center gap-2 flex-wrap">
+            @if ($isProcessing)
+            <div class="flex  text-white h-[50vh] text-4xl  items-center justify-center">
+                <svg class="animate-spin h-5 w-5 mr-3 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke-width="6" />
+                    <path d="M22 12h-4l-3 9M2 12h4l3 9" stroke-width="6" />
+                </svg>
+                <p>Loading...</p>
+
+            </div>
+            @else
+            @foreach ($images as $image)
+            @if (Storage::exists('public/' . $image))
+            <div class="w-1/5">
+                <img src="{{ asset('storage/' . $image) }}" alt="Image" class="max-w-full h-auto">
+            </div>
+            @endif
+            @endforeach
+            @endif
+        </div>
     </div>
 </div>
